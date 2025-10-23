@@ -26,4 +26,7 @@
     <string name="home_quiz_level_hint">Chọn cấp độ JLPT</string>
     <string name="home_quiz_selection_message">Đang chuẩn bị bộ câu hỏi cho %1$s.</string>
     <string name="home_quiz_placeholder">Tính năng luyện trắc nghiệm đang được hoàn thiện.</string>
+    <string name="testing_button_label">Save demo credentials</string>
+    <string name="testing_button_saving">Saving…</string>
+
 </resources>
