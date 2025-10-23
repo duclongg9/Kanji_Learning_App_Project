@@ -4,4 +4,26 @@
     <string name="app_name">Hanabi Kanji</string>
     <string name="home_title">Trang chủ</string>
     <string name="admin_title">Quản trị</string>
+    <string name="login_logo_content_description">Biểu tượng hoa anh đào của Hanabi Kanji</string>
+    <string name="login_title">Chào mừng đến Hanabi Kanji</string>
+    <string name="login_subtitle">Học Kanji theo cấp JLPT từ N5 đến N1.</string>
+    <string name="login_alt_label">Hoặc vào ngay với tài khoản khách</string>
+    <string name="login_kanji_symbol_button">Xem danh sách Kanji</string>
+    <string name="login_testing_button">Lưu thông tin thử nghiệm</string>
+    <string name="login_disclaimer">Demo lưu thông tin trên máy chủ riêng, không chia sẻ dữ liệu cá nhân.</string>
+    <string name="testing_button_user_email">demo@kanji.app</string>
+    <string name="testing_button_user_display_name">Tài khoản Demo</string>
+    <string name="testing_button_user_token">demo-token</string>
+    <string name="testing_button_save_error">Không lưu được dữ liệu: %1$s</string>
+    <string name="testing_button_save_success">Đã lưu thông tin demo</string>
+    <string name="home_menu_header">Nội dung chính</string>
+    <string name="home_kanji_card_title">Kanji (lý thuyết)</string>
+    <string name="home_kanji_card_description">Danh sách cấp Mức độ × JLPT, mở đầy đủ cho FREE.</string>
+    <string name="home_access_free">FREE</string>
+    <string name="home_access_vip">VIP</string>
+    <string name="home_quiz_card_title">Luyện trắc nghiệm</string>
+    <string name="home_quiz_card_description">Chọn cấp độ để luyện câu hỏi, sẽ cập nhật sau.</string>
+    <string name="home_quiz_level_hint">Chọn cấp độ JLPT</string>
+    <string name="home_quiz_selection_message">Đang chuẩn bị bộ câu hỏi cho %1$s.</string>
+    <string name="home_quiz_placeholder">Tính năng luyện trắc nghiệm đang được hoàn thiện.</string>
 </resources>

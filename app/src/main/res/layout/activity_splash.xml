@@ -12,7 +12,7 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:contentDescription="@string/app_name"
-        android:src="@mipmap/ic_launcher_foreground"
+        android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintBottom_toTopOf="@+id/textAppName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

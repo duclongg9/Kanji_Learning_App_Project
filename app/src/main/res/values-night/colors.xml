@@ -5,4 +5,8 @@
     <color name="login_gradient_end">#FF4A2545</color>
     <color name="login_primary">#FFF07BB5</color>
     <color name="login_ripple">#66F07BB5</color>
+    <color name="sakura_card">#FF1F1B24</color>
+    <color name="sakura_text">#FFF7D7E4</color>
+    <color name="home_chip_free_background">#66F07BB5</color>
+    <color name="home_chip_vip_background">#FF2A2A2A</color>
 </resources>
