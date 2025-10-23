@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="login_gradient_start">#FF2A1326</color>
+    <color name="login_gradient_center">#FF3A1D37</color>
+    <color name="login_gradient_end">#FF4A2545</color>
+    <color name="login_primary">#FFF07BB5</color>
+    <color name="login_ripple">#66F07BB5</color>
+</resources>
