@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- VI: Biểu tượng Google dạng vector đơn giản -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#4285F4"
+        android:pathData="M21.35,11.1H12v2.9h5.35c-0.25,1.5-1.5,3.5-3.5,3.5a4.06,4.06 0 0,1 -4,-4 4.06,4.06 0 0,1 4,-4 3.66,3.66 0 0,1 2.6,1l2.05-2A7.05,7.05 0 0,0 13.85,6a7,7 0 0,0 0,14c4,0 6.85,-2.8 6.85,-6.8a6.62,6.62 0 0,0 -0.35,-2.1z" />
+</vector>

@@ -1,20 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.KanjiLearning" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/login_primary</item>
-        <item name="colorPrimaryVariant">@color/sakura_primary_dark</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/sakura_primary</item>
-        <item name="colorSecondaryVariant">@color/sakura_primary_light</item>
-        <item name="colorOnSecondary">@color/sakura_text</item>
-        <!-- Status & navigation bar color for light mode. -->
-        <item name="android:statusBarColor">@color/login_gradient_end</item>
-        <item name="android:navigationBarColor">@color/login_gradient_end</item>
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="android:windowLightNavigationBar">true</item>
-        <item name="android:colorBackground">@color/sakura_primary_light</item>
-        <item name="android:textColorPrimary">@color/sakura_text</item>
+    <!-- VI: Theme chính sử dụng Material Components -->
+    <style name="Theme.KanjiLearning" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/pinkAccent</item>
+        <item name="colorSecondary">@color/pinkAccent</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/pinkAccent</item>
     </style>
 </resources>
