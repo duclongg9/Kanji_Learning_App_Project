@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- VI: Điều hướng trong Home -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_home"
+    app:startDestination="@id/homeMenuFragment">
+
+    <fragment
+        android:id="@+id/homeMenuFragment"
+        android:name="com.example.kanjilearning.presentation.home.menu.HomeMenuFragment"
+        android:label="Menu chính" />
+
+    <fragment
+        android:id="@+id/kanjiTheoryFragment"
+        android:name="com.example.kanjilearning.presentation.home.kanji.KanjiTheoryFragment"
+        android:label="Kanji lý thuyết" />
+
+    <fragment
+        android:id="@+id/kanjiQuizFragment"
+        android:name="com.example.kanjilearning.presentation.home.quiz.KanjiQuizFragment"
+        android:label="Luyện trắc nghiệm" />
+</navigation>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- VI: Gradient nhẹ gợi nhớ sắc hoa anh đào -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:startColor="#FFF5F7"
+        android:endColor="#FFDEE9"
+        android:angle="45" />
+</shape>

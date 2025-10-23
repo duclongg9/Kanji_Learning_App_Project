@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- VI: Điều hướng khu vực admin -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_admin"
+    app:startDestination="@id/adminAccountsFragment">
+
+    <fragment
+        android:id="@+id/adminAccountsFragment"
+        android:name="com.example.kanjilearning.presentation.admin.accounts.AdminAccountsFragment"
+        android:label="Tài khoản" />
+
+    <fragment
+        android:id="@+id/adminImportKanjiFragment"
+        android:name="com.example.kanjilearning.presentation.admin.importer.AdminImportKanjiFragment"
+        android:label="Import Kanji" />
+</navigation>

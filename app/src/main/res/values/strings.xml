@@ -1,15 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Sakura Kanji</string>
-    <string name="login_title">Sakura Kanji</string>
-    <string name="login_subtitle">Không gian luyện ôn Kanji lấy cảm hứng hoa anh đào: lịch ôn thông minh, flashcard tinh gọn, gợi ý JLPT phù hợp.</string>
-    <string name="login_logo_content_description">Biểu tượng hoa anh đào của ứng dụng Sakura Kanji</string>
-    <string name="login_alt_label">hoặc khám phá nhanh</string>
-    <string name="login_kanji_symbol_button">Khám phá biểu tượng Kanji</string>
-    <string name="login_testing_button">Lưu thông tin thử nghiệm</string>
-    <string name="login_disclaimer">Tiếp tục đồng nghĩa bạn đã đọc và đồng ý với Điều khoản sử dụng &amp; Chính sách bảo mật.</string>
-    <string name="testing_button_user_email">tester@example.com</string>
-    <string name="testing_button_user_display_name">Kanji Tester</string>
-    <string name="testing_button_user_token">demo-token</string>
-    <string name="testing_button_save_success">Đã lưu thông tin đăng nhập thử nghiệm vào MySQL.</string>
-    <string name="testing_button_save_error">Không thể lưu thông tin đăng nhập: %1$s</string>
+    <!-- VI: Chuỗi hiển thị -->
+    <string name="app_name">Hanabi Kanji</string>
+    <string name="home_title">Trang chủ</string>
+    <string name="admin_title">Quản trị</string>
 </resources>

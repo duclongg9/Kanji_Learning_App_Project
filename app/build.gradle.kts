@@ -1,32 +1,22 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.hilt.android)
 }
 
 android {
     namespace = "com.example.kanjilearning"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.kanjilearning"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-        // VI: Host/MySQL server nội bộ để kiểm thử (ví dụ: 10.0.2.2 khi chạy trên emulator Android).
-        buildConfigField("String", "MYSQL_HOST", "\"10.0.2.2\"")
-        // VI: Cổng kết nối MySQL mặc định; đổi nếu DBA quy định cổng khác.
-        buildConfigField("int", "MYSQL_PORT", "3306")
-        // VI: Tên database chứa bảng `users`; nhớ khởi tạo đúng schema trước khi build.
-        buildConfigField("String", "MYSQL_DB_NAME", "\"kanji_app\"")
-        // VI: Tài khoản MySQL có quyền INSERT/UPDATE vào bảng `users`; không commit tài khoản thật vào repo.
-        buildConfigField("String", "MYSQL_USER", "\"root\"")
-        // VI: Mật khẩu tương ứng với tài khoản trên; nên inject qua CI/Gradle properties khi lên môi trường thật.
-        buildConfigField("String", "MYSQL_PASSWORD", "\"123456\"")
+        testInstrumentationRunner = "com.example.kanjilearning.KanjiTestRunner"
     }
 
     buildTypes {
@@ -38,22 +28,63 @@ android {
             )
         }
     }
+
     buildFeatures {
+        viewBinding = true
         buildConfig = true
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
     }
 }
 
 dependencies {
+    implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
+    implementation(libs.activity.ktx)
+    implementation(libs.fragment.ktx)
+    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
     implementation(libs.play.services.auth)
-    implementation(libs.mysql.connector)
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    implementation(libs.room.paging)
+    implementation(libs.hilt.android)
+    implementation(libs.work.runtime.ktx)
+    implementation(libs.hilt.work)
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.android)
+    implementation(libs.datastore.preferences)
+    implementation(libs.splashscreen)
+    implementation(libs.constraintlayout)
+    implementation(libs.recyclerview)
+    implementation(libs.cardview)
+    implementation(libs.viewpager2)
+
+    kapt(libs.room.compiler)
+    kapt(libs.hilt.compiler)
+    kapt(libs.hilt.compiler.androidx)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+}
+
+kapt {
+    correctErrorTypes = true
 }
