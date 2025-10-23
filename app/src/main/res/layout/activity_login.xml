@@ -27,8 +27,8 @@
         android:text="Đăng nhập Google"
         android:textAllCaps="false"
         android:icon="@drawable/ic_google"
-        android:iconPadding="16dp"
-        android:iconGravity="textStart"
+        app:iconPadding="16dp"
+        app:iconGravity="textStart"
         app:layout_constraintTop_toBottomOf="@id/textGreeting"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
