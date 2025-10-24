@@ -37,31 +37,51 @@ class AdminImportKanjiViewModel @Inject constructor(
         viewModelScope.launch {
             _state.update { it.copy(isProcessing = true, message = null) }
             try {
-                val lines = csvContent.lines().filter { it.isNotBlank() }
-                val dataLines = if (lines.isNotEmpty() && lines.first().contains("character", true)) {
-                    lines.drop(1)
-                } else {
-                    lines
-                }
-                val kanjiList = dataLines.mapIndexed { index, line ->
-                    val columns = line.split(",")
-                    Kanji(
-                        id = 0,
-                        character = columns.getOrNull(0)?.trim().orEmpty(),
-                        onyomi = columns.getOrNull(1)?.trim().orEmpty(),
-                        kunyomi = columns.getOrNull(2)?.trim().orEmpty(),
-                        meaning = columns.getOrNull(3)?.trim().orEmpty(),
-                        jlptLevel = jlptLevel,
-                        difficulty = columns.getOrNull(4)?.trim()?.toIntOrNull() ?: (index % 5 + 1),
-                        accessTier = accessTier
+                val rawLines = csvContent.lineSequence()
+                    .map { it.trim() }
+                    .filter { it.isNotEmpty() }
+
+                val hasHeader = rawLines.firstOrNull()?.contains("character", ignoreCase = true) == true
+                val dataLines = if (hasHeader) rawLines.drop(1) else rawLines
+
+                var totalImported = 0
+                dataLines
+                    .chunked(IMPORT_BATCH_SIZE)
+                    .forEach { chunk ->
+                        val chunkList = chunk.mapIndexed { indexInChunk, line ->
+                            val columns = line.split(",")
+                            val absoluteIndex = totalImported + indexInChunk
+                            Kanji(
+                                id = 0,
+                                character = columns.getOrNull(0)?.trim().orEmpty(),
+                                onyomi = columns.getOrNull(1)?.trim().orEmpty(),
+                                kunyomi = columns.getOrNull(2)?.trim().orEmpty(),
+                                meaning = columns.getOrNull(3)?.trim().orEmpty(),
+                                jlptLevel = jlptLevel,
+                                difficulty = columns.getOrNull(4)?.trim()?.toIntOrNull()
+                                    ?: ((absoluteIndex % DEFAULT_DIFFICULTY_RANGE) + 1),
+                                accessTier = accessTier
+                            )
+                        }
+                        kanjiRepository.importKanji(chunkList)
+                        totalImported += chunkList.size
+                    }
+
+                _state.update {
+                    it.copy(
+                        isProcessing = false,
+                        message = "Import thành công $totalImported Kanji"
                     )
                 }
-                kanjiRepository.importKanji(kanjiList)
-                _state.update { it.copy(isProcessing = false, message = "Import thành công ${kanjiList.size} Kanji") }
-            } catch (e: Exception) {
+                            } catch (e: Exception) {
                 _state.update { it.copy(isProcessing = false, message = e.message ?: "Import thất bại") }
             }
         }
+    }
+
+    companion object {
+        private const val IMPORT_BATCH_SIZE = 500
+        private const val DEFAULT_DIFFICULTY_RANGE = 5
     }
 }
 
