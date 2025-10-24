@@ -25,6 +25,8 @@ cardview = "1.0.0"
 viewpager2 = "1.0.0"
 mysqlConnector = "8.3.0"
 roomPaging = "3.2.0-alpha05"
+navigationFragmentKtx = "2.9.5"
+navigationUiKtx = "2.9.5"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -59,6 +61,8 @@ mysql-connector = { group = "com.mysql", name = "mysql-connector-j", version.ref
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
+androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

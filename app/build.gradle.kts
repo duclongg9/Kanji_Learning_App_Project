@@ -83,6 +83,8 @@ dependencies {
     implementation(libs.cardview)
     implementation(libs.viewpager2)
     implementation(libs.mysql.connector)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
     kapt(libs.room.compiler)
     kapt(libs.hilt.compiler)

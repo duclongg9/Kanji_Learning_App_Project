@@ -14,22 +14,20 @@ import com.google.android.material.textview.MaterialTextView
 internal data class KanjiSublevel(
     val name: String,
     val isAccessible: Boolean
-)
-
-internal data class KanjiLevel(
+)internal data class KanjiLevel(
     val name: String,
     val isFree: Boolean,
     val sublevels: List<KanjiSublevel>
 )
 
-class KanjiLevelAdapter(
+internal class KanjiLevelAdapter(
     private val onSublevelClick: (KanjiLevel, KanjiSublevel) -> Unit
 ) : RecyclerView.Adapter<KanjiLevelAdapter.LevelViewHolder>() {
 
     private val items = mutableListOf<KanjiLevel>()
     private val expandedPositions = mutableSetOf<Int>()
 
-    fun submitList(levels: List<KanjiLevel>) {
+    internal fun submitList(levels: List<KanjiLevel>) {
         items.clear()
         items.addAll(levels)
         notifyDataSetChanged()
