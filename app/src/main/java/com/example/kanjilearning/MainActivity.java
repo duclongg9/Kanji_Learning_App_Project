@@ -1,16 +1,21 @@
 package com.example.kanjilearning;
 
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.kanjilearning.data.MySqlSchemaInspectionResult;
 import com.example.kanjilearning.data.MySqlUserRepository;
 import com.google.android.material.button.MaterialButton;
 
+import java.util.concurrent.CompletionException;
+
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
 
     @Nullable
     private MySqlUserRepository userRepository;
@@ -51,29 +56,52 @@ public class MainActivity extends AppCompatActivity {
         // Disable button to avoid double-submit
         setBusy(true);
 
-        userRepository.saveUserCredentialsAsync(
-                email, displayName, idToken,
-                // onError
-                throwable -> runOnUiThread(() -> {
+        userRepository.inspectSchemaAsync()
+                .thenCompose((MySqlSchemaInspectionResult result) -> {
+                    if (result == null) {
+                        throw new IllegalStateException("Schema inspection returned null");
+                    }
+                    if (!result.isHealthy()) {
+                        throw new IllegalStateException(result.describeProblems());
+                    }
+                    return userRepository.saveUserCredentialsAsync(email, displayName, idToken);
+                })
+                .thenRun(() -> runOnUiThread(() -> {
                     setBusy(false);
                     Toast.makeText(
                             this,
-                            getString(R.string.testing_button_save_error, safeMsg(throwable)),
-                            Toast.LENGTH_LONG
+                            R.string.testing_button_save_success,
+                            Toast.LENGTH_SHORT
                     ).show();
-                })
-        ).thenRun(() -> runOnUiThread(() -> {
-            setBusy(false);
-            Toast.makeText(
-                    this,
-                    R.string.testing_button_save_success,
-                    Toast.LENGTH_SHORT
-            ).show();
-        }));
+                }))
+                .exceptionally(throwable -> {
+                    final Throwable cause = unwrap(throwable);
+                    Log.e(TAG, "Demo persistence failed", cause);
+                    runOnUiThread(() -> {
+                        setBusy(false);
+                        showError(cause);
+                    });
+                    return null;
+                });
     }
 
     private String safeMsg(Throwable t) {
         return (t == null || t.getMessage() == null) ? "Unknown error" : t.getMessage();
+    }
+
+    private void showError(Throwable throwable) {
+        Toast.makeText(
+                this,
+                getString(R.string.testing_button_save_error, safeMsg(throwable)),
+                Toast.LENGTH_LONG
+        ).show();
+    }
+
+    private Throwable unwrap(Throwable throwable) {
+        if (throwable instanceof CompletionException && throwable.getCause() != null) {
+            return throwable.getCause();
+        }
+        return throwable;
     }
 
     private void setBusy(boolean busy) {
