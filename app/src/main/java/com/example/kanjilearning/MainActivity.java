@@ -1,4 +1,4 @@
-package com.example.kanjilearning; 
+package com.example.kanjilearning;
 
 import android.app.Activity;
 import android.os.Bundle;
