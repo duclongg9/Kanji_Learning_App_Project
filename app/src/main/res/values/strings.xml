@@ -18,9 +18,14 @@
     <string name="testing_button_save_success">Đã lưu thông tin demo</string>
     <string name="home_menu_header">Khám phá Kanji</string>
     <string name="home_menu_kanji_symbol">漢字</string>
-    <string name="home_menu_kanji_label">Bộ từ vựng</string>
     <string name="home_menu_practice_symbol">練習</string>
-    <string name="home_menu_practice_label">Luyện tập</string>
+    <string name="home_kanji_card_title">Thư viện Kanji</string>
+    <string name="home_kanji_card_description">Theo dõi từ vựng Kanji phân loại theo cấp JLPT với chú thích dễ hiểu.</string>
+    <string name="home_access_free">FREE</string>
+    <string name="home_access_vip">VIP</string>
+    <string name="home_practice_card_title">Luyện thi Kanji</string>
+    <string name="home_practice_card_description">Chọn bộ câu hỏi trắc nghiệm phù hợp với cấp độ hiện tại của bạn.</string>
+    <string name="home_practice_level_hint">Chọn cấp độ luyện tập</string>
     <string name="kanji_level_selector_title">Chọn cấp độ Kanji</string>
     <string name="kanji_level_selector_subtitle">Mỗi cấp độ có ba mức: Cơ bản, Trung bình và Nâng cao.</string>
     <string name="kanji_level_selector_locked">Vui lòng đăng nhập VIP để mở khóa mức này.</string>
