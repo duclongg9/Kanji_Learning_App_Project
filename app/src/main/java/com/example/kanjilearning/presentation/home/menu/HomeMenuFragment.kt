@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.kanjilearning.R
@@ -32,32 +31,10 @@ class HomeMenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.cardKanjiTheory.setOnClickListener {
-            findNavController().navigate(R.id.action_homeMenuFragment_to_kanjiTheoryFragment)
+            findNavController().navigate(R.id.action_homeMenuFragment_to_kanjiLevelSelectorFragment)
         }
-        binding.practiceLevelDropdown.keyListener = null
-        binding.practiceLevelDropdown.setText("", false)
-        binding.practiceLevelDropdown.setOnClickListener {
-            binding.practiceLevelDropdown.showDropDown()
-        }
-        binding.practiceLevelDropdown.setOnFocusChangeListener { _, hasFocus ->
-            if (hasFocus) {
-                binding.practiceLevelDropdown.showDropDown()
-            }
-        }
-        binding.practiceLevelDropdown.setOnItemClickListener { parent, _, position, _ ->
-            val selected = parent?.getItemAtPosition(position)?.toString().orEmpty()
-            if (selected.isNotBlank()) {
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.home_quiz_selection_message, selected),
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-            binding.practiceLevelDropdown.setText("", false)
-        }
-        binding.cardQuiz.setOnClickListener {
-            binding.practiceLevelDropdown.showDropDown()
-            Toast.makeText(requireContext(), R.string.home_quiz_placeholder, Toast.LENGTH_SHORT).show()
+        binding.cardPractice.setOnClickListener {
+            findNavController().navigate(R.id.action_homeMenuFragment_to_kanjiQuizFragment)
         }
     }
 
