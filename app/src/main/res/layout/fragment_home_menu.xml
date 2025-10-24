@@ -1,166 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- VI: Màn hình Home cho user FREE/VIP với hai thẻ chính -->
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- VI: Màn hình Home với hai ô vuông trung tâm -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:padding="24dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/homeMenuHeader"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp">
+        android:layout_marginBottom="24dp"
+        android:text="@string/home_menu_header"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:textColor="@color/sakura_text"
+        app:layout_constraintBottom_toTopOf="@id/cardKanjiTheory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/homeMenuHeader"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardKanjiTheory"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="@color/sakura_card"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="6dp"
+        app:layout_constraintBottom_toTopOf="@id/cardPractice"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeMenuHeader"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/home_menu_header"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-            android:textColor="@color/sakura_text" />
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardKanjiTheory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:foreground="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardBackgroundColor="@color/sakura_card"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            app:cardUseCompatPadding="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/kanjiSymbol"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="24dp">
+                android:text="@string/home_menu_kanji_symbol"
+                android:textColor="@color/sakura_text"
+                android:textSize="42sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/kanjiCardTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/home_kanji_card_title"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:textColor="@color/sakura_text" />
-
-                <TextView
-                    android:id="@+id/kanjiCardDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/home_kanji_card_description"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                    android:textColor="@color/sakura_text" />
-
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/accessChipGroup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp">
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/freeChip"
-                        style="@style/Widget.MaterialComponents.Chip.Assist"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checkable="false"
-                        android:clickable="false"
-                        android:text="@string/home_access_free"
-                        android:textColor="@color/pinkAccent"
-                        app:chipBackgroundColor="@color/home_chip_free_background"
-                        app:chipCornerRadius="12dp"
-                        app:chipStrokeWidth="0dp" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/vipChip"
-                        style="@style/Widget.MaterialComponents.Chip.Assist"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:alpha="0.35"
-                        android:checkable="false"
-                        android:clickable="false"
-                        android:text="@string/home_access_vip"
-                        android:textColor="@color/pinkAccent"
-                        app:chipBackgroundColor="@color/home_chip_vip_background"
-                        app:chipCornerRadius="12dp"
-                        app:chipStrokeWidth="0dp" />
-                </com.google.android.material.chip.ChipGroup>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardQuiz"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:foreground="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardBackgroundColor="@color/sakura_card"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            app:cardUseCompatPadding="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/kanjiLabel"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="24dp">
+                android:layout_marginTop="8dp"
+                android:text="@string/home_menu_kanji_label"
+                android:textColor="@color/sakura_text"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
-                <TextView
-                    android:id="@+id/quizCardTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/home_quiz_card_title"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:textColor="@color/sakura_text" />
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardPractice"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="@color/sakura_card"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardKanjiTheory">
 
-                <TextView
-                    android:id="@+id/quizCardDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/home_quiz_card_description"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                    android:textColor="@color/sakura_text" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/practiceLevelLayout"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:hint="@string/home_quiz_level_hint"
-                    app:endIconMode="dropdown">
+            <TextView
+                android:id="@+id/practiceSymbol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_menu_practice_symbol"
+                android:textColor="@color/sakura_text"
+                android:textSize="42sp"
+                android:textStyle="bold" />
 
-                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                        android:id="@+id/practiceLevelDropdown"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:cursorVisible="false"
-                        android:dropDownHeight="wrap_content"
-                        android:dropDownWidth="match_parent"
-                        android:inputType="none"
-                        android:importantForAutofill="no"
-                        android:textColor="@color/sakura_text"
-                        android:textColorHint="@android:color/darker_gray"
-                        app:simpleItems="@array/practice_levels" />
-                </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/practiceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/home_menu_practice_label"
+                android:textColor="@color/sakura_text"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
-                <TextView
-                    android:id="@+id/practicePlaceholder"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="@string/home_quiz_placeholder"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                    android:textColor="@android:color/darker_gray" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

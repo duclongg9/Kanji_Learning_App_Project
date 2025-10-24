@@ -8,7 +8,23 @@
     <fragment
         android:id="@+id/homeMenuFragment"
         android:name="com.example.kanjilearning.presentation.home.menu.HomeMenuFragment"
-        android:label="Menu chính" />
+        android:label="Menu chính">
+        <action
+            android:id="@+id/action_homeMenuFragment_to_kanjiLevelSelectorFragment"
+            app:destination="@id/kanjiLevelSelectorFragment" />
+        <action
+            android:id="@+id/action_homeMenuFragment_to_kanjiQuizFragment"
+            app:destination="@id/kanjiQuizFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/kanjiLevelSelectorFragment"
+        android:name="com.example.kanjilearning.presentation.home.kanji.KanjiLevelSelectorFragment"
+        android:label="Chọn cấp độ">
+        <action
+            android:id="@+id/action_kanjiLevelSelectorFragment_to_kanjiTheoryFragment"
+            app:destination="@id/kanjiTheoryFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/kanjiTheoryFragment"

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="kanji_level_sublevel_padding_horizontal">16dp</dimen>
+    <dimen name="kanji_level_sublevel_padding_vertical">12dp</dimen>
+    <dimen name="kanji_level_sublevel_margin_top">8dp</dimen>
+</resources>
