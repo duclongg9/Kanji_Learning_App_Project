@@ -17,13 +17,6 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "com.example.kanjilearning.KanjiTestRunner"
-
-        // Demo MySQL connection parameters used by MainActivity's testing button.
-        buildConfigField("String", "MYSQL_HOST", "\"10.0.2.2\"")
-        buildConfigField("int", "MYSQL_PORT", "3306")
-        buildConfigField("String", "MYSQL_DB_NAME", "\"kanji_app\"")
-        buildConfigField("String", "MYSQL_USER", "\"root\"")
-        buildConfigField("String", "MYSQL_PASSWORD", "\"123456\"")
     }
 
     buildTypes {
