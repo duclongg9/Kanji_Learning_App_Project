@@ -2,6 +2,7 @@
 <androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,40 +12,26 @@
         android:padding="24dp">
 
         <!-- Header -->
-        <TextView
-            android:id="@+id/homeMenuHeader"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:text="@string/home_menu_header"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-            android:textColor="@color/sakura_text"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Card: Kanji (Lý thuyết) -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardKanjiTheory"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="635dp"
+            android:layout_height="592dp"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
             app:cardBackgroundColor="@color/sakura_card"
             app:cardCornerRadius="20dp"
             app:cardElevation="6dp"
-            app:layout_constraintTop_toBottomOf="@id/homeMenuHeader"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/cardPractice"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintDimensionRatio="1:1">
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="51dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="618dp"
+                android:layout_height="592dp"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="16dp">
@@ -58,65 +45,19 @@
                     android:textSize="42sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/kanjiCardTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/home_kanji_card_title"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:textColor="@color/sakura_text" />
-
-                <TextView
-                    android:id="@+id/kanjiCardDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/home_kanji_card_description"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                    android:textColor="@color/sakura_text" />
-
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/accessChipGroup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp">
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/freeChip"
-                        style="@style/Widget.MaterialComponents.Chip.Assist"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checkable="false"
-                        android:clickable="false"
-                        android:text="@string/home_access_free"
-                        android:textColor="@color/pinkAccent"
-                        app:chipBackgroundColor="@color/home_chip_free_background"
-                        app:chipCornerRadius="12dp"
-                        app:chipStrokeWidth="0dp" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/vipChip"
-                        style="@style/Widget.MaterialComponents.Chip.Assist"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:alpha="0.35"
-                        android:checkable="false"
-                        android:clickable="false"
-                        android:text="@string/home_access_vip"
-                        android:textColor="@color/pinkAccent"
-                        app:chipBackgroundColor="@color/home_chip_vip_background"
-                        app:chipCornerRadius="12dp"
-                        app:chipStrokeWidth="0dp" />
-                </com.google.android.material.chip.ChipGroup>
+                    android:layout_marginTop="12dp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Card: Luyện tập (Quiz) -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardPractice"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="617dp"
+            android:layout_height="604dp"
             android:layout_marginTop="24dp"
             android:clickable="true"
             android:focusable="true"
@@ -124,15 +65,17 @@
             app:cardBackgroundColor="@color/sakura_card"
             app:cardCornerRadius="20dp"
             app:cardElevation="6dp"
-            app:layout_constraintTop_toBottomOf="@id/cardKanjiTheory"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="1:1">
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.532"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardKanjiTheory"
+            app:layout_constraintVertical_bias="1.0">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="643dp"
+                android:layout_height="620dp"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="16dp">
@@ -146,34 +89,6 @@
                     android:textSize="42sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/practiceLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/home_menu_practice_label"
-                    android:textColor="@color/sakura_text"
-                    android:textStyle="bold" />
-
-                <!-- Tuỳ chọn mức luyện tập -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp">
-
-                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                        android:id="@+id/practiceLevelDropdown"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:cursorVisible="false"
-                        android:dropDownWidth="match_parent"
-                        android:dropDownHeight="wrap_content"
-                        android:importantForAutofill="no"
-                        android:inputType="none"
-                        android:textColor="@color/sakura_text"
-                        android:textColorHint="@android:color/darker_gray"
-                        app:simpleItems="@array/practice_levels" />
-                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
