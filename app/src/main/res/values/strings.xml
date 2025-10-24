@@ -2,6 +2,7 @@
 <resources>
     <!-- VI: Chuỗi hiển thị -->
     <string name="app_name">Hanabi Kanji</string>
+    <string name="main_bootstrap_message">Hanabi Kanji – khởi động thành công!</string>
     <string name="home_title">Trang chủ</string>
     <string name="admin_title">Quản trị</string>
     <string name="login_logo_content_description">Biểu tượng hoa anh đào của Hanabi Kanji</string>
