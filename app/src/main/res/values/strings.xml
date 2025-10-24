@@ -9,13 +9,6 @@
     <string name="login_subtitle">Học Kanji theo cấp JLPT từ N5 đến N1.</string>
     <string name="login_alt_label">Hoặc vào ngay với tài khoản khách</string>
     <string name="login_kanji_symbol_button">Xem danh sách Kanji</string>
-    <string name="login_testing_button">Lưu thông tin thử nghiệm</string>
-    <string name="login_disclaimer">Demo lưu thông tin trên máy chủ riêng, không chia sẻ dữ liệu cá nhân.</string>
-    <string name="testing_button_user_email">demo@kanji.app</string>
-    <string name="testing_button_user_display_name">Tài khoản Demo</string>
-    <string name="testing_button_user_token">demo-token</string>
-    <string name="testing_button_save_error">Không lưu được dữ liệu: %1$s</string>
-    <string name="testing_button_save_success">Đã lưu thông tin demo</string>
     <string name="home_menu_header">Khám phá Kanji</string>
     <string name="home_menu_kanji_symbol">漢字</string>
     <string name="home_menu_kanji_label">Bộ từ vựng</string>
@@ -29,7 +22,5 @@
     <string name="kanji_level_basic">Cơ bản</string>
     <string name="kanji_level_intermediate">Trung bình</string>
     <string name="kanji_level_advanced">Nâng cao</string>
-    <string name="testing_button_label">Save demo credentials</string>
-    <string name="testing_button_saving">Saving…</string>
 
 </resources>
