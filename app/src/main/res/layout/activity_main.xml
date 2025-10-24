@@ -83,6 +83,15 @@
                 android:layout_marginTop="32dp"
                 app:buttonSize="wide" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/testingButton"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/testing_button_label"
+                android:textAllCaps="false" />
+
         </LinearLayout>
     </FrameLayout>
 </ScrollView>
