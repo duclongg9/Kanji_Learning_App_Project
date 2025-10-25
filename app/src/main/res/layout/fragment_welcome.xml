@@ -26,8 +26,8 @@
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textTitle"
                 style="@style/AppText.LargeTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_height="134dp"
                 android:text="@string/welcome_title"
                 app:layout_constraintBottom_toTopOf="@id/textMessage"
                 app:layout_constraintEnd_toEndOf="parent"
