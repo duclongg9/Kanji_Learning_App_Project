@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.kanjilearning.R
@@ -25,9 +26,14 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.buttonNextLevel.setOnClickListener {
-            findNavController().navigate(R.id.action_profileFragment_to_kanjiLevelN5Fragment)
+        binding.buttonMenu.setOnClickListener {
+            binding.drawerLayout.openDrawer(GravityCompat.START)
         }
+        binding.buttonNext.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_kanjiFragment)
+        }
+        // Show the drawer by default to mirror the provided design
+        binding.drawerLayout.openDrawer(GravityCompat.START)
     }
 
     override fun onDestroyView() {

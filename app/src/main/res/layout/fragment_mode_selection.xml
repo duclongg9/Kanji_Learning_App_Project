@@ -3,127 +3,116 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_base"
-    android:padding="32dp">
+    android:background="@color/background_base">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textPrompt"
-        style="@style/TextCaption"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/mode_prompt"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textModeTitle"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/figma_hand"
-        android:gravity="center"
-        android:text="@string/mode_title"
-        android:textColor="@color/text_primary"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@id/cardContainer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45" />
-
-    <LinearLayout
-        android:id="@+id/cardContainer"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:showDividers="middle"
-        android:divider="@drawable/divider_space"
-        app:layout_constraintBottom_toTopOf="@id/textModeHint"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textModeTitle"
-        app:layout_constraintVertical_bias="0.1">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardKanji"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:foreground="?attr/selectableItemBackground"
-            app:cardBackgroundColor="@color/select_option_background"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="0dp"
-            app:cardUseCompatPadding="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="24dp">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/figma_hand"
-                    android:text="@string/mode_kanji_label"
-                    android:textColor="@color/text_primary"
-                    android:textSize="32sp" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    style="@style/TextCaption"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/mode_kanji_hint" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardPractice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:foreground="?attr/selectableItemBackground"
-            app:cardBackgroundColor="@color/select_option_background"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="0dp"
-            app:cardUseCompatPadding="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="24dp">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/figma_hand"
-                    android:text="@string/mode_practice_label"
-                    android:textColor="@color/text_primary"
-                    android:textSize="32sp" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    style="@style/TextCaption"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/mode_practice_hint" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-    </LinearLayout>
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textModeHint"
-        style="@style/TextBody"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/mode_footer"
+        android:layout_height="0dp"
+        android:layout_margin="24dp"
+        app:cardBackgroundColor="@color/personal_card_background"
+        app:cardCornerRadius="48dp"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="32dp">
+
+            <ImageButton
+                android:id="@+id/buttonMenu"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/profile_menu_content_description"
+                android:padding="8dp"
+                android:src="@drawable/ic_menu"
+                app:tint="@color/text_primary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textInstructionTop"
+                style="@style/AppText.Caption"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/mode_instruction_top"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.3" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardKanji"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/select_option_background"
+                app:cardCornerRadius="36dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textInstructionTop">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="32dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/AppText.LargeTitle"
+                        android:text="@string/mode_option_study" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textInstructionBottom"
+                style="@style/AppText.Caption"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:text="@string/mode_instruction_bottom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardKanji" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardPractice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/select_option_background"
+                app:cardCornerRadius="36dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textInstructionBottom">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="32dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/AppText.LargeTitle"
+                        android:text="@string/mode_option_practice" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

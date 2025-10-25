@@ -6,4 +6,6 @@
     <color name="text_primary">#FF3A2F2F</color>
     <color name="text_secondary">#FF6F5B5B</color>
     <color name="button_shadow">#1A3A2F2F</color>
+    <color name="vip_badge_background">#FFE2BFBF</color>
+    <color name="kanji_option_disabled_text">#803A2F2F</color>
 </resources>

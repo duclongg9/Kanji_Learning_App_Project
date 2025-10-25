@@ -1,38 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Hanabi Kanji</string>
-    <string name="title_welcome">Chào mừng</string>
-    <string name="title_login">Đăng nhập</string>
-    <string name="title_mode_selection">Chọn chế độ</string>
-    <string name="title_profile">Thông tin cá nhân</string>
-    <string name="title_level_n5">Kanji cấp độ N5</string>
-    <string name="title_level_n4">Kanji cấp độ N4</string>
-    <string name="title_level_n3">Kanji cấp độ N3</string>
-    <string name="title_level_n2">Kanji cấp độ N2</string>
-    <string name="welcome_tagline">Nắng mai ấm áp ghé chào bạn!</string>
+
+    <!-- Welcome -->
     <string name="welcome_title">HANABI
 KANJI APP</string>
-    <string name="welcome_message">Cùng luyện Kanji mỗi ngày nhé!</string>
-    <string name="action_get_started">Bắt đầu ngay</string>
-    <string name="login_encouragement">Cố lên, nhập nhanh nào!</string>
-    <string name="login_title">Chào bạn trở lại</string>
-    <string name="login_subtitle">Đăng nhập để đồng bộ tiến trình học.</string>
+    <string name="welcome_message">chào cậu, chúc cậu học Kanji thật vui cùng Hoa nha</string>
+
+    <!-- Login -->
+    <string name="login_title">Cậu đăng nhập nhaaa!</string>
     <string name="action_login_google">Login with Google</string>
-    <string name="mode_prompt">Nhớ chọn kiểu học nha</string>
-    <string name="mode_title">Chọn chế độ học</string>
-    <string name="mode_kanji_label">漢字</string>
-    <string name="mode_kanji_hint">Học lý thuyết Kanji</string>
-    <string name="mode_practice_label">練習</string>
-    <string name="mode_practice_hint">Luyện tập ghi nhớ</string>
-    <string name="mode_footer">Bạn có thể đổi lại sau ở phần cài đặt.</string>
-    <string name="profile_prompt">Hồ sơ của bạn</string>
+
+    <!-- Mode selection -->
+    <string name="mode_instruction_top">nếu cậu học thì chọn cái trên</string>
+    <string name="mode_instruction_bottom">nếu cậu luyện tập chọn cái nè</string>
+    <string name="mode_option_study">漢字</string>
+    <string name="mode_option_practice">練習</string>
+
+    <!-- Profile / personal -->
+    <string name="profile_menu_content_description">Mở bảng thông tin cá nhân</string>
     <string name="profile_name">Phạm Đức Long</string>
-    <string name="profile_email">phamduclong@hanabi.app</string>
+    <string name="profile_address">Địa chỉ: Đại học FPT HN</string>
+    <string name="profile_phone">Số điện thoại: 0385189399</string>
+    <string name="profile_level">Trình độ JLPT N1</string>
     <string name="profile_upgrade">Nâng cấp VIP</string>
-    <string name="profile_hint">Các mục ở bên dưới sẽ giúp bạn theo dõi lịch học cá nhân.</string>
-    <string name="profile_avatar_content_description">Ảnh đại diện người dùng</string>
-    <string name="action_continue">Tiếp tục</string>
-    <string name="action_finish">Hoàn tất</string>
-    <string name="subtitle_level_n5">Bắt đầu hành trình với bộ Kanji cơ bản.</string>
-    <string name="subtitle_level_generic">Tiếp tục bứt phá với Kanji nâng cao.</string>
+    <string name="profile_version">Phiên bản số 1.0.1</string>
+    <string name="profile_credit">Design by Hoa Na</string>
+    <string name="profile_continue">Đi tới Kanji</string>
+
+    <!-- Kanji screen -->
+    <string name="kanji_section_n5">Kanji cấp độ N5</string>
+    <string name="kanji_section_n4">Kanji cấp độ N4</string>
+    <string name="kanji_section_n3">Kanji cấp độ N3</string>
+    <string name="kanji_section_n2">Kanji cấp độ N2</string>
+    <string name="kanji_section_n1">Kanji cấp độ N1</string>
+    <string name="kanji_option_basic">Cơ bản</string>
+    <string name="kanji_option_intermediate">Trung cấp</string>
+    <string name="kanji_option_advanced">Cao cấp</string>
+    <string name="kanji_option_vip">VIP</string>
 </resources>
