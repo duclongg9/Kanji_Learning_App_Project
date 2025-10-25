@@ -5,6 +5,17 @@ plugins {
     alias(libs.plugins.hilt.android)
 }
 
+configurations.all {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "com.squareup" && requested.name == "javapoet") {
+            useVersion("1.13.0")
+            because("Hilt requires ClassName.canonicalName() available in Javapoet 1.13.0")
+        }
+    }
+}
+
+
+
 android {
     namespace = "com.example.kanjilearning"
     compileSdk = 35

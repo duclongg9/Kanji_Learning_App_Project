@@ -48,7 +48,7 @@
             <ImageView
                 android:id="@+id/expandIcon"
                 android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_height="27dp"
                 android:contentDescription="@null"
                 android:rotation="0"
                 android:src="@drawable/ic_chevron_down" />
