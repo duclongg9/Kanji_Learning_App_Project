@@ -7,16 +7,10 @@ plugins {
 
 val javapoetVersion = libs.versions.javapoet.get()
 
-configurations.configureEach {
-    resolutionStrategy.eachDependency {
-        if (requested.group == "com.squareup" && requested.name == "javapoet") {
-            useVersion(javapoetVersion)
-            because("Hilt requires ClassName.canonicalName() available in Javapoet $javapoetVersion")
-        }
-    }
+// Ép Javapoet cho MỌI cấu hình (implementation/kapt/annotationProcessor…)
+configurations.all {
+    resolutionStrategy.force("com.squareup:javapoet:$javapoetVersion")
 }
-
-
 
 android {
     namespace = "com.example.kanjilearning"
@@ -29,7 +23,8 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "com.example.kanjilearning.KanjiTestRunner"
+        // Nếu bạn có class runner riêng thì đổi lại tên class của bạn.
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -64,11 +59,9 @@ android {
 }
 
 dependencies {
-    constraints {
-        add("kapt", "com.squareup:javapoet:$javapoetVersion") {
-            because("Ensure KAPT resolves Javapoet $javapoetVersion so processors can access ClassName.canonicalName().")
-        }
-    }
+    // Đảm bảo Gradle kéo đúng artifact Javapoet đã force
+    compileOnly("com.squareup:javapoet:$javapoetVersion")
+
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -76,15 +69,26 @@ dependencies {
     implementation(libs.fragment.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.lifecycle.viewmodel.ktx)
+
+    // Navigation (giữ một bộ, tránh trùng)
     implementation(libs.navigation.fragment.ktx)
     implementation(libs.navigation.ui.ktx)
+
     implementation(libs.play.services.auth)
+
+    // Room (đồng bộ phiên bản giữa runtime/ktx/compiler)
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     implementation(libs.room.paging)
+
+    // Hilt
     implementation(libs.hilt.android)
+
+    // WorkManager + Hilt integration
     implementation(libs.work.runtime.ktx)
     implementation(libs.hilt.work)
+
+    // Khác
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
     implementation(libs.datastore.preferences)
@@ -94,12 +98,12 @@ dependencies {
     implementation(libs.cardview)
     implementation(libs.viewpager2)
     implementation(libs.mysql.connector)
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
 
+    // Annotation processors (KHÔNG trộn KSP + KAPT cho cùng 1 lib)
     kapt(libs.room.compiler)
     kapt(libs.hilt.compiler)
     kapt(libs.hilt.compiler.androidx)
+    kapt(libs.javapoet)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
