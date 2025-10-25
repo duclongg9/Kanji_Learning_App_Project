@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- VI: Các cấp độ luyện trắc nghiệm theo JLPT và mức độ -->
-    <string-array name="practice_levels">
-        <item>N5 - Cơ bản</item>
-        <item>N5 - Nâng cao</item>
-        <item>N4 - Cơ bản</item>
-        <item>N4 - Nâng cao</item>
-        <item>N3 - Cơ bản</item>
-        <item>N3 - Nâng cao</item>
-        <item>N2 - Cơ bản</item>
-        <item>N2 - Nâng cao</item>
-        <item>N1 - Cơ bản</item>
-        <item>N1 - Nâng cao</item>
+    <string-array name="kanji_level_n5_fields">
+        <item>Kanji cấp độ N5</item>
+        <item>Ghi nhớ nghĩa đơn giản</item>
+    </string-array>
+    <string-array name="kanji_level_n4_fields">
+        <item>Kanji cấp độ N4</item>
+        <item>Từ vựng áp dụng</item>
+        <item>Ví dụ ngắn</item>
+    </string-array>
+    <string-array name="kanji_level_n3_fields">
+        <item>Kanji cấp độ N3</item>
+        <item>Âm On</item>
+        <item>Âm Kun</item>
+        <item>Câu ví dụ</item>
+    </string-array>
+    <string-array name="kanji_level_n2_fields">
+        <item>Kanji cấp độ N2</item>
+        <item>Ngữ cảnh thường gặp</item>
+        <item>Ghi chú văn hóa</item>
+        <item>Ôn tập nhanh</item>
+    </string-array>
+    <string-array name="kanji_dropdown_options">
+        <item>Chọn một mục</item>
+        <item>Gợi ý 1</item>
+        <item>Gợi ý 2</item>
+        <item>Gợi ý 3</item>
     </string-array>
 </resources>
