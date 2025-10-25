@@ -33,4 +33,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/progress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Đăng nhập thất bại" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
