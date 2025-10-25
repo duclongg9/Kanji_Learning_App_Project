@@ -11,6 +11,14 @@ val javapoetVersion = libs.versions.javapoet.get()
 configurations.all {
     resolutionStrategy.force("com.squareup:javapoet:$javapoetVersion")
 }
+configurations.matching {
+    it.name.contains("kapt", ignoreCase = true) ||
+            it.name.contains("annotationProcessor", ignoreCase = true)
+}.all {
+    resolutionStrategy.force("com.squareup:javapoet:$javapoetVersion")
+}
+
+
 
 android {
     namespace = "com.example.kanjilearning"
@@ -103,7 +111,6 @@ dependencies {
     kapt(libs.room.compiler)
     kapt(libs.hilt.compiler)
     kapt(libs.hilt.compiler.androidx)
-    kapt(libs.javapoet)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
