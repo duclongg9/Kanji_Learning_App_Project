@@ -3,54 +3,52 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_base"
-    android:padding="32dp">
+    android:background="@color/background_base">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textGreeting"
-        style="@style/TextCaption"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/welcome_tagline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textTitle"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardWelcome"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/figma_hand"
-        android:gravity="center"
-        android:text="@string/welcome_title"
-        android:textColor="@color/text_primary"
-        android:textSize="48sp"
-        app:layout_constraintBottom_toTopOf="@id/textSubtitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textGreeting"
-        app:layout_constraintVertical_bias="0.4" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textSubtitle"
-        style="@style/TextBody"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/welcome_message"
-        app:layout_constraintBottom_toTopOf="@id/buttonContinue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textTitle"
-        app:layout_constraintVertical_bias="0.2" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonContinue"
-        style="@style/PrimaryButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/action_get_started"
+        android:layout_height="0dp"
+        android:layout_margin="24dp"
+        app:cardBackgroundColor="@color/personal_card_background"
+        app:cardCornerRadius="48dp"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="32dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textTitle"
+                style="@style/AppText.LargeTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/welcome_title"
+                app:layout_constraintBottom_toTopOf="@id/textMessage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.45" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textMessage"
+                style="@style/AppText.Caption"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/welcome_message"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textTitle"
+                app:layout_constraintVertical_bias="1.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

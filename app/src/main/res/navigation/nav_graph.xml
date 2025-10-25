@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.example.kanjilearning.ui.WelcomeFragment"
-        android:label="@string/title_welcome"
+        android:label="Welcome"
         tools:layout="@layout/fragment_welcome">
         <action
             android:id="@+id/action_welcomeFragment_to_loginFragment"
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.kanjilearning.ui.LoginFragment"
-        android:label="@string/title_login"
+        android:label="Login"
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_modeSelectionFragment"
@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/modeSelectionFragment"
         android:name="com.example.kanjilearning.ui.ModeSelectionFragment"
-        android:label="@string/title_mode_selection"
+        android:label="ModeSelection"
         tools:layout="@layout/fragment_mode_selection">
         <action
             android:id="@+id/action_modeSelectionFragment_to_profileFragment"
@@ -38,117 +38,17 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.kanjilearning.ui.ProfileFragment"
-        android:label="@string/title_profile"
+        android:label="Profile"
         tools:layout="@layout/fragment_profile">
         <action
-            android:id="@+id/action_profileFragment_to_kanjiLevelN5Fragment"
-            app:destination="@id/kanjiLevelN5Fragment" />
+            android:id="@+id/action_profileFragment_to_kanjiFragment"
+            app:destination="@id/kanjiFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/kanjiLevelN5Fragment"
-        android:name="com.example.kanjilearning.ui.KanjiLevelFragment"
-        android:label="@string/title_level_n5"
-        tools:layout="@layout/fragment_kanji_level">
-        <argument
-            android:name="levelTitle"
-            app:argType="string"
-            android:defaultValue="@string/title_level_n5" />
-        <argument
-            android:name="levelSubtitle"
-            app:argType="string"
-            android:defaultValue="@string/subtitle_level_n5" />
-        <argument
-            android:name="fieldLabels"
-            app:argType="string[]"
-            android:defaultValue="@array/kanji_level_n5_fields" />
-        <argument
-            android:name="nextActionId"
-            app:argType="reference"
-            android:defaultValue="@id/action_kanjiLevelN5Fragment_to_kanjiLevelN4Fragment" />
-        <action
-            android:id="@+id/action_kanjiLevelN5Fragment_to_kanjiLevelN4Fragment"
-            app:destination="@id/kanjiLevelN4Fragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/kanjiLevelN4Fragment"
-        android:name="com.example.kanjilearning.ui.KanjiLevelFragment"
-        android:label="@string/title_level_n4"
-        tools:layout="@layout/fragment_kanji_level">
-        <argument
-            android:name="levelTitle"
-            app:argType="string"
-            android:defaultValue="@string/title_level_n4" />
-        <argument
-            android:name="levelSubtitle"
-            app:argType="string"
-            android:defaultValue="@string/subtitle_level_generic" />
-        <argument
-            android:name="fieldLabels"
-            app:argType="string[]"
-            android:defaultValue="@array/kanji_level_n4_fields" />
-        <argument
-            android:name="nextActionId"
-            app:argType="reference"
-            android:defaultValue="@id/action_kanjiLevelN4Fragment_to_kanjiLevelN3Fragment" />
-        <action
-            android:id="@+id/action_kanjiLevelN4Fragment_to_kanjiLevelN3Fragment"
-            app:destination="@id/kanjiLevelN3Fragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/kanjiLevelN3Fragment"
-        android:name="com.example.kanjilearning.ui.KanjiLevelFragment"
-        android:label="@string/title_level_n3"
-        tools:layout="@layout/fragment_kanji_level">
-        <argument
-            android:name="levelTitle"
-            app:argType="string"
-            android:defaultValue="@string/title_level_n3" />
-        <argument
-            android:name="levelSubtitle"
-            app:argType="string"
-            android:defaultValue="@string/subtitle_level_generic" />
-        <argument
-            android:name="fieldLabels"
-            app:argType="string[]"
-            android:defaultValue="@array/kanji_level_n3_fields" />
-        <argument
-            android:name="nextActionId"
-            app:argType="reference"
-            android:defaultValue="@id/action_kanjiLevelN3Fragment_to_kanjiLevelN2Fragment" />
-        <action
-            android:id="@+id/action_kanjiLevelN3Fragment_to_kanjiLevelN2Fragment"
-            app:destination="@id/kanjiLevelN2Fragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/kanjiLevelN2Fragment"
-        android:name="com.example.kanjilearning.ui.KanjiLevelFragment"
-        android:label="@string/title_level_n2"
-        tools:layout="@layout/fragment_kanji_level">
-        <argument
-            android:name="levelTitle"
-            app:argType="string"
-            android:defaultValue="@string/title_level_n2" />
-        <argument
-            android:name="levelSubtitle"
-            app:argType="string"
-            android:defaultValue="@string/subtitle_level_generic" />
-        <argument
-            android:name="fieldLabels"
-            app:argType="string[]"
-            android:defaultValue="@array/kanji_level_n2_fields" />
-        <argument
-            android:name="nextActionId"
-            app:argType="reference"
-            android:defaultValue="0" />
-        <action
-            android:id="@+id/action_kanjiLevelN2Fragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment"
-            app:popUpTo="@id/welcomeFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
+        android:id="@+id/kanjiFragment"
+        android:name="com.example.kanjilearning.ui.KanjiFragment"
+        android:label="Kanji"
+        tools:layout="@layout/fragment_kanji" />
 
 </navigation>

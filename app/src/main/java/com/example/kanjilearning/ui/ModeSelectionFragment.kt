@@ -25,11 +25,12 @@ class ModeSelectionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val navigateToProfile = View.OnClickListener {
+        val toProfile = View.OnClickListener {
             findNavController().navigate(R.id.action_modeSelectionFragment_to_profileFragment)
         }
-        binding.cardKanji.setOnClickListener(navigateToProfile)
-        binding.cardPractice.setOnClickListener(navigateToProfile)
+        binding.cardKanji.setOnClickListener(toProfile)
+        binding.cardPractice.setOnClickListener(toProfile)
+        binding.buttonMenu.setOnClickListener(toProfile)
     }
 
     override fun onDestroyView() {
