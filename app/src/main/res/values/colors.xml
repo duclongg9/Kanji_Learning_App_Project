@@ -3,7 +3,11 @@
     <color name="background_base">#FFE2BFBF</color>
     <color name="personal_card_background">#FFEDDFDF</color>
     <color name="select_option_background">#FFF9E6E6</color>
+    <color name="chip_disabled_background">#FFECD8D8</color>
     <color name="text_primary">#FF3A2F2F</color>
     <color name="text_secondary">#FF6F5B5B</color>
     <color name="button_shadow">#1A3A2F2F</color>
+    <color name="vip_badge_background">#FFE2BFBF</color>
+    <color name="kanji_option_disabled_text">#803A2F2F</color>
+    <color name="chip_stroke">#4D3A2F2F</color>
 </resources>

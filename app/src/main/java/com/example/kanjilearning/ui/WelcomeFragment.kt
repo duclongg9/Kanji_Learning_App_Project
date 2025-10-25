@@ -17,7 +17,7 @@ class WelcomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentWelcomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -25,9 +25,11 @@ class WelcomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.buttonContinue.setOnClickListener {
+        val navigateNext = View.OnClickListener {
             findNavController().navigate(R.id.action_welcomeFragment_to_loginFragment)
         }
+        binding.cardWelcome.setOnClickListener(navigateNext)
+        binding.buttonGetStarted.setOnClickListener(navigateNext)
     }
 
     override fun onDestroyView() {
