@@ -5,6 +5,19 @@ plugins {
     alias(libs.plugins.hilt.android)
 }
 
+val javapoetVersion = libs.versions.javapoet.get()
+
+configurations.configureEach {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "com.squareup" && requested.name == "javapoet") {
+            useVersion(javapoetVersion)
+            because("Hilt requires ClassName.canonicalName() available in Javapoet $javapoetVersion")
+        }
+    }
+}
+
+
+
 android {
     namespace = "com.example.kanjilearning"
     compileSdk = 35
@@ -17,13 +30,6 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "com.example.kanjilearning.KanjiTestRunner"
-
-        // Demo MySQL connection parameters used by MainActivity's testing button.
-        buildConfigField("String", "MYSQL_HOST", "\"10.0.2.2\"")
-        buildConfigField("int", "MYSQL_PORT", "3306")
-        buildConfigField("String", "MYSQL_DB_NAME", "\"kanji_app\"")
-        buildConfigField("String", "MYSQL_USER", "\"root\"")
-        buildConfigField("String", "MYSQL_PASSWORD", "\"123456\"")
     }
 
     buildTypes {
@@ -58,6 +64,11 @@ android {
 }
 
 dependencies {
+    constraints {
+        add("kapt", "com.squareup:javapoet:$javapoetVersion") {
+            because("Ensure KAPT resolves Javapoet $javapoetVersion so processors can access ClassName.canonicalName().")
+        }
+    }
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -83,6 +94,8 @@ dependencies {
     implementation(libs.cardview)
     implementation(libs.viewpager2)
     implementation(libs.mysql.connector)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
     kapt(libs.room.compiler)
     kapt(libs.hilt.compiler)

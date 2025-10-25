@@ -1,7 +1,7 @@
 # Kanji Learning App
 
 This project contains an Android demo application that talks directly to a MySQL instance. The
-"Save demo credentials" button in `MainActivity` (for internal testing only) writes a sample user
+"Save demo credentials" button in `com.example.kanjilearning.MainActivity` (for internal testing only) writes a sample user
 record to the `kanji_app` schema defined in [`kanji_app_v1.sql`](kanji_app_v1.sql).
 
 ## Prerequisites

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.kanjilearning.ui.WelcomeFragment"
+        android:label="Welcome"
+        tools:layout="@layout/fragment_welcome">
+        <action
+            android:id="@+id/action_welcomeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.kanjilearning.ui.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_modeSelectionFragment"
+            app:destination="@id/modeSelectionFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/modeSelectionFragment"
+        android:name="com.example.kanjilearning.ui.ModeSelectionFragment"
+        android:label="ModeSelection"
+        tools:layout="@layout/fragment_mode_selection">
+        <action
+            android:id="@+id/action_modeSelectionFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.kanjilearning.ui.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_kanjiFragment"
+            app:destination="@id/kanjiFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/kanjiFragment"
+        android:name="com.example.kanjilearning.ui.KanjiFragment"
+        android:label="Kanji"
+        tools:layout="@layout/fragment_kanji" />
+
+</navigation>

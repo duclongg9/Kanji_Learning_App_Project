@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- VI: Theme tối -->
     <style name="Theme.KanjiLearning" parent="Theme.Material3.Dark.NoActionBar">
-        <item name="colorPrimary">@color/pinkAccent</item>
-        <item name="colorSecondary">@color/pinkAccent</item>
+        <item name="colorPrimary">@color/select_option_background</item>
+        <item name="colorSecondary">@color/select_option_background</item>
+        <item name="android:windowBackground">@color/background_base</item>
     </style>
 </resources>
