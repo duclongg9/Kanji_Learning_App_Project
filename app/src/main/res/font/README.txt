@@ -1,0 +1,1 @@
+Place your Figma Hand font file as res/font/figma_hand_regular.ttf
