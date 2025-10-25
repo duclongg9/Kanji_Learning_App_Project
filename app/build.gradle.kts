@@ -5,11 +5,13 @@ plugins {
     alias(libs.plugins.hilt.android)
 }
 
-configurations.all {
+val javapoetVersion = libs.versions.javapoet.get()
+
+configurations.configureEach {
     resolutionStrategy.eachDependency {
         if (requested.group == "com.squareup" && requested.name == "javapoet") {
-            useVersion("1.13.0")
-            because("Hilt requires ClassName.canonicalName() available in Javapoet 1.13.0")
+            useVersion(javapoetVersion)
+            because("Hilt requires ClassName.canonicalName() available in Javapoet $javapoetVersion")
         }
     }
 }
@@ -62,6 +64,11 @@ android {
 }
 
 dependencies {
+    constraints {
+        add("kapt", "com.squareup:javapoet:$javapoetVersion") {
+            because("Ensure KAPT resolves Javapoet $javapoetVersion so processors can access ClassName.canonicalName().")
+        }
+    }
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)

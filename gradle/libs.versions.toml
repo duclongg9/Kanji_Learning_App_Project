@@ -27,6 +27,7 @@ roomPaging = "3.2.0-alpha05"
 navigationFragmentKtx = "2.9.5"
 navigationUiKtx = "2.9.5"
 mysqlConnector = "8.0.33"
+javapoet = "1.13.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -62,6 +63,7 @@ espresso-core = { group = "androidx.test.espresso", name = "espresso-core", vers
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 mysql-connector = { group = "mysql", name = "mysql-connector-java", version.ref = "mysqlConnector" }
+javapoet = { group = "com.squareup", name = "javapoet", version.ref = "javapoet" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
