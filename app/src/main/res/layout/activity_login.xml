@@ -13,14 +13,15 @@
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:icon="@drawable/ic_google"
         android:text="Đăng nhập Google"
         android:textAllCaps="false"
+        app:layout_constraintTop_toTopOf="parent"
         app:iconGravity="textStart"
         app:iconPadding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="88dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/progress"
