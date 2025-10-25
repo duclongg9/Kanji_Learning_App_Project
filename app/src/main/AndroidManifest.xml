@@ -12,19 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KanjiLearning">
         <activity
-            android:name="com.example.kanjilearning.presentation.admin.AdminDashboardActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.example.kanjilearning.presentation.home.HomeActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.example.kanjilearning.presentation.router.RouterActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.example.kanjilearning.presentation.login.LoginActivity"
-            android:exported="true" />
-        <activity
-            android:name="com.example.kanjilearning.presentation.splash.SplashActivity"
+            android:name="com.example.kanjilearning.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
