@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppText.Hero">
+    <style name="AppText">
         <item name="android:textColor">@color/text_primary</item>
-        <item name="android:textSize">56sp</item>
         <item name="android:fontFamily">@font/figma_hand</item>
+    </style>
+
+    <style name="AppText.Hero" parent="AppText">
+        <item name="android:textSize">56sp</item>
         <item name="android:lineHeight">64sp</item>
     </style>
 
-    <style name="AppText.LargeTitle">
-        <item name="android:textColor">@color/text_primary</item>
+    <style name="AppText.LargeTitle" parent="AppText">
         <item name="android:textSize">48sp</item>
-        <item name="android:fontFamily">@font/figma_hand</item>
         <item name="android:lineHeight">54sp</item>
     </style>
 
-    <style name="AppText.Title">
-        <item name="android:textColor">@color/text_primary</item>
+    <style name="AppText.Title" parent="AppText">
         <item name="android:textSize">32sp</item>
-        <item name="android:fontFamily">@font/figma_hand</item>
         <item name="android:lineHeight">40sp</item>
     </style>
 
-    <style name="AppText.BodyLarge">
+    <style name="AppText.BodyLarge" parent="AppText">
         <item name="android:textColor">@color/text_secondary</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:fontFamily">@font/figma_hand</item>
         <item name="android:lineHeight">28sp</item>
     </style>
 
-    <style name="AppText.Body">
+    <style name="AppText.Body" parent="AppText">
         <item name="android:textColor">@color/text_secondary</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:fontFamily">@font/figma_hand</item>
         <item name="android:lineHeight">24sp</item>
     </style>
 
-    <style name="AppText.Caption">
+    <style name="AppText.Caption" parent="AppText">
         <item name="android:textColor">@color/text_secondary</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:fontFamily">@font/figma_hand</item>
         <item name="android:lineHeight">20sp</item>
+    </style>
+
+    <style name="AppText.Disabled" parent="AppText">
+        <item name="android:textColor">@color/kanji_option_disabled_text</item>
     </style>
 
     <style name="AppButton.Primary" parent="Widget.Material3.Button">
