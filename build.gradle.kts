@@ -10,6 +10,7 @@ buildscript {
     }
     dependencies {
         classpath("com.squareup:javapoet:${libs.versions.javapoet.get()}")
+        classpath("com.google.gms:google-services:${libs.versions.googleServices.get()}")
     }
 }
 
