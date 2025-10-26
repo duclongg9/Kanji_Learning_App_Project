@@ -1,6 +1,7 @@
 package com.example.kanjilearning.di
 
 import android.content.Context
+import com.example.kanjilearning.BuildConfig
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -20,10 +21,16 @@ object GoogleAuthModule {
 
     @Provides
     @Singleton
-    fun provideGoogleSignInOptions(): GoogleSignInOptions =
-        GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+    fun provideGoogleSignInOptions(): GoogleSignInOptions {
+        val builder = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
-            .build()
+            .requestId()
+        val clientId = BuildConfig.GOOGLE_WEB_CLIENT_ID
+        if (clientId.isNotBlank()) {
+            builder.requestIdToken(clientId)
+        }
+        return builder.build()
+    }
 
     @Provides
     @Singleton

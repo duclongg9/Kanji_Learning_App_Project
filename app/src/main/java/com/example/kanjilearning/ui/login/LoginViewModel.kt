@@ -60,7 +60,7 @@ class LoginViewModel @Inject constructor(
                     displayName = account.displayName.orEmpty(),
                     email = account.email.orEmpty(),
                     role = Role.FREE,
-                    lastSyncedAt = System.currentTimeMillis()
+                    lastSyncedAt = 0L
                 )
                 userRepository.saveUser(user)
                 _events.send(LoginEvent.NavigateNext)

@@ -123,8 +123,20 @@ class LoginFragment : Fragment() {
         val message = when (type) {
             LoginErrorType.Cancelled -> getString(R.string.login_error_cancelled)
             LoginErrorType.MissingId -> getString(R.string.login_error_missing_id)
-            is LoginErrorType.SignInFailed -> getString(R.string.login_error_sign_in_failed)
-            is LoginErrorType.SaveFailed -> getString(R.string.login_error_save_failed)
+            is LoginErrorType.SignInFailed -> {
+                val base = getString(R.string.login_error_sign_in_failed)
+                val detail = (type.cause as? ApiException)?.let { apiException ->
+                    val code = apiException.statusCode
+                    val statusName = CommonStatusCodes.getStatusCodeString(code)
+                    "$statusName ($code)"
+                } ?: type.cause?.localizedMessage
+                if (detail.isNullOrBlank()) base else "$base\n$detail"
+            }
+            is LoginErrorType.SaveFailed -> {
+                val base = getString(R.string.login_error_save_failed)
+                val detail = type.cause.localizedMessage
+                if (detail.isNullOrBlank()) base else "$base\n$detail"
+            }
         }
         Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
     }
