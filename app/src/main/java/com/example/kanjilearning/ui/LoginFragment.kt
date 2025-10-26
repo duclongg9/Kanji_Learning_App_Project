@@ -21,7 +21,9 @@ import com.example.kanjilearning.ui.login.LoginUiState
 import com.example.kanjilearning.ui.login.LoginViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInStatusCodes
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -42,11 +44,16 @@ class LoginFragment : Fragment() {
 
     private val googleLoginLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode != Activity.RESULT_OK) {
-                viewModel.onLoginCancelled()
+            val intent = result.data
+            if (intent == null) {
+                if (result.resultCode == Activity.RESULT_CANCELED) {
+                    viewModel.onLoginCancelled()
+                } else {
+                    viewModel.onLoginFailed(null)
+                }
                 return@registerForActivityResult
             }
-            val intent = result.data
+
             val task = GoogleSignIn.getSignedInAccountFromIntent(intent)
             try {
                 val account = task.getResult(ApiException::class.java)
@@ -56,6 +63,12 @@ class LoginFragment : Fragment() {
                     viewModel.onLoginFailed(null)
                 }
             } catch (error: ApiException) {
+                when (error.statusCode) {
+                    CommonStatusCodes.CANCELED, GoogleSignInStatusCodes.SIGN_IN_CANCELLED ->
+                        viewModel.onLoginCancelled()
+                    else -> viewModel.onLoginFailed(error)
+                }
+            } catch (error: Exception) {
                 viewModel.onLoginFailed(error)
             }
         }
