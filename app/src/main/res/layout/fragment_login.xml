@@ -78,6 +78,15 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progressLogin"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/buttonLogin"
+                app:layout_constraintEnd_toEndOf="@id/buttonLogin"
+                app:layout_constraintTop_toTopOf="@id/buttonLogin" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 

@@ -9,17 +9,19 @@
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/pill_chip"
         android:gravity="center_vertical"
+        android:minHeight="56dp"
         android:paddingLeft="@dimen/space_20"
         android:paddingRight="@dimen/space_20"
-        android:background="@drawable/pill_chip"
+        android:paddingTop="@dimen/space_12"
+        android:paddingBottom="@dimen/space_12"
         android:layout_marginBottom="@dimen/space_12">
 
         <TextView
             android:id="@+id/tvTitle"
             style="@style/AppText.Body"
-            android:text="Kanji cấp độ N5"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
@@ -35,57 +37,18 @@
         android:id="@+id/sublevels"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space_8"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="gone" />
 
-        <TextView
-            style="@style/AppText.Body"
-            android:text="Cơ bản"
-            android:background="@drawable/pill_chip"
-            android:padding="@dimen/space_12"
-            android:layout_marginBottom="@dimen/space_8"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/pill_chip_disabled"
-            android:padding="@dimen/space_12"
-            android:layout_marginBottom="@dimen/space_8">
-
-            <TextView
-                style="@style/AppText.Disabled"
-                android:text="Trung cấp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-            <TextView
-                android:text="VIP"
-                android:textSize="@dimen/text_small"
-                android:background="@drawable/pill_vip"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/pill_chip_disabled"
-            android:padding="@dimen/space_12">
-
-            <TextView
-                style="@style/AppText.Disabled"
-                android:text="Cao cấp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-            <TextView
-                android:text="VIP"
-                android:textSize="@dimen/text_small"
-                android:background="@drawable/pill_vip"/>
-        </LinearLayout>
-    </LinearLayout>
+    <TextView
+        android:id="@+id/textEmpty"
+        style="@style/AppText.Body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/pill_chip_disabled"
+        android:gravity="center"
+        android:padding="@dimen/space_12"
+        android:text="@string/kanji_section_empty"
+        android:visibility="gone" />
 </LinearLayout>
