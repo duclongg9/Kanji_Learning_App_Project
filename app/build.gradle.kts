@@ -5,7 +5,16 @@ plugins {
     alias(libs.plugins.hilt.android)
 }
 
+fun String.escapeForJava(): String = replace("\"", "\\\"")
+
 val javapoetVersion = libs.versions.javapoet.get()
+
+val mysqlHost = providers.gradleProperty("MYSQL_HOST").orElse("10.0.2.2")
+val mysqlPort = providers.gradleProperty("MYSQL_PORT").orElse("3306")
+val mysqlDbName = providers.gradleProperty("MYSQL_DB_NAME").orElse("kanji_app")
+val mysqlUser = providers.gradleProperty("MYSQL_USER").orElse("root")
+val mysqlPassword = providers.gradleProperty("MYSQL_PASSWORD").orElse("123456")
+val googleWebClientId = providers.gradleProperty("GOOGLE_WEB_CLIENT_ID").orElse("")
 
 configurations.configureEach {
     resolutionStrategy.eachDependency {
@@ -30,6 +39,13 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "com.example.kanjilearning.KanjiTestRunner"
+
+        buildConfigField("String", "MYSQL_HOST", "\"${mysqlHost.get().escapeForJava()}\"")
+        buildConfigField("int", "MYSQL_PORT", mysqlPort.get())
+        buildConfigField("String", "MYSQL_DB_NAME", "\"${mysqlDbName.get().escapeForJava()}\"")
+        buildConfigField("String", "MYSQL_USER", "\"${mysqlUser.get().escapeForJava()}\"")
+        buildConfigField("String", "MYSQL_PASSWORD", "\"${mysqlPassword.get().escapeForJava()}\"")
+        buildConfigField("String", "GOOGLE_WEB_CLIENT_ID", "\"${googleWebClientId.get().escapeForJava()}\"")
     }
 
     buildTypes {

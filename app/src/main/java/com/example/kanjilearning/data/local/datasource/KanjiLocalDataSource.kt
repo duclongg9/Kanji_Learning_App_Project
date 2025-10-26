@@ -30,4 +30,11 @@ class KanjiLocalDataSource @Inject constructor(
     suspend fun importKanji(items: List<KanjiEntity>) {
         kanjiDao.upsertAll(items)
     }
+
+    /**
+     * VI: Thay thế toàn bộ bảng Kanji bằng dữ liệu mới từ server.
+     */
+    suspend fun replaceAll(items: List<KanjiEntity>) {
+        kanjiDao.replaceAll(items)
+    }
 }
