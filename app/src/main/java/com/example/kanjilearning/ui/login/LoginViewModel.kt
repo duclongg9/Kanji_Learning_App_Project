@@ -5,6 +5,7 @@ import com.example.kanjilearning.domain.repository.UserRepository
 import com.example.kanjilearning.domain.util.Role
 import com.google.android.gms.auth.api.identity.SignInCredential
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.libraries.identity.googleid.GoogleIdCredential
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.channels.Channel
@@ -47,8 +48,8 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun onGoogleCredentialReceived(credential: SignInCredential) {
-        val googleId = credential.googleIdToken ?: credential.id
+    fun onGoogleCredentialReceived(credential: GoogleIdCredential) {
+        val googleId = credential.idToken ?: credential.id
         val email = credential.id
         val displayName = credential.displayName.orEmpty()
         persistUser(googleId, email, displayName)

@@ -28,6 +28,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInStatusCodes
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.libraries.identity.googleid.GoogleIdCredential
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import kotlinx.coroutines.launch
@@ -53,6 +54,31 @@ class LoginFragment : Fragment() {
 
     private val googleIdentityLauncher =
         registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
+            val intent = result.data
+            if (intent == null) {
+                if (result.resultCode == Activity.RESULT_CANCELED) {
+                    viewModel.onLoginCancelled()
+                } else {
+                    viewModel.onLoginFailed(null)
+                }
+                return@registerForActivityResult
+            }
+            try {
+                val credential = GoogleIdCredential.fromIntent(intent)
+                viewModel.onGoogleCredentialReceived(credential)
+            } catch (error: ApiException) {
+                when (error.statusCode) {
+                    CommonStatusCodes.CANCELED -> viewModel.onLoginCancelled()
+                    CommonStatusCodes.DEVELOPER_ERROR -> launchLegacySignIn()
+                    else -> viewModel.onLoginFailed(error)
+                }
+            } catch (error: Exception) {
+                viewModel.onLoginFailed(error)
+            }
+        }
+
+    private val legacyGoogleLoginLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             val intent = result.data
             if (intent == null) {
                 if (result.resultCode == Activity.RESULT_CANCELED) {
