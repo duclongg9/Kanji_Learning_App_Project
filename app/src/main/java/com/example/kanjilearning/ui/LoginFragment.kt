@@ -88,19 +88,37 @@ class LoginFragment : Fragment() {
                 }
                 return@registerForActivityResult
             }
-
-            val task = GoogleSignIn.getSignedInAccountFromIntent(intent)
             try {
-                val account = task.getResult(ApiException::class.java)
-                if (account != null) {
-                    viewModel.onGoogleAccountReceived(account)
+                val credential = identitySignInClient.getSignInCredentialFromIntent(intent)
+                viewModel.onGoogleCredentialReceived(credential)
+            } catch (error: ApiException) {
+                when (error.statusCode) {
+                    CommonStatusCodes.CANCELED -> viewModel.onLoginCancelled()
+                    CommonStatusCodes.DEVELOPER_ERROR -> launchLegacySignIn()
+                    else -> viewModel.onLoginFailed(error)
+                }
+            } catch (error: Exception) {
+                viewModel.onLoginFailed(error)
+            }
+        }
+
+    private val legacyGoogleLoginLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            val intent = result.data
+            if (intent == null) {
+                if (result.resultCode == Activity.RESULT_CANCELED) {
+                    viewModel.onLoginCancelled()
                 } else {
                     viewModel.onLoginFailed(null)
                 }
+                return@registerForActivityResult
+            }
+            try {
+                val credential = googleSignInClient.getSignInCredentialFromIntent(intent)
+                viewModel.onGoogleCredentialReceived(credential)
             } catch (error: ApiException) {
                 when (error.statusCode) {
-                    CommonStatusCodes.CANCELED, GoogleSignInStatusCodes.SIGN_IN_CANCELLED ->
-                        viewModel.onLoginCancelled()
+                    CommonStatusCodes.CANCELED -> viewModel.onLoginCancelled()
                     else -> viewModel.onLoginFailed(error)
                 }
             } catch (error: Exception) {

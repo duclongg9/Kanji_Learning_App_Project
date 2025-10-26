@@ -3,6 +3,7 @@ package com.example.kanjilearning.ui.login
 import com.example.kanjilearning.domain.model.User
 import com.example.kanjilearning.domain.repository.UserRepository
 import com.example.kanjilearning.domain.util.Role
+import com.google.android.gms.auth.api.identity.SignInCredential
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.libraries.identity.googleid.GoogleIdCredential
 import dagger.hilt.android.lifecycle.HiltViewModel
