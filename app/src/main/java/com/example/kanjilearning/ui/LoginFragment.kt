@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.IntentSenderRequest
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -19,12 +20,15 @@ import com.example.kanjilearning.ui.login.LoginErrorType
 import com.example.kanjilearning.ui.login.LoginEvent
 import com.example.kanjilearning.ui.login.LoginUiState
 import com.example.kanjilearning.ui.login.LoginViewModel
+import com.google.android.gms.auth.api.identity.GetSignInIntentRequest
+import com.google.android.gms.auth.api.identity.SignInClient
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInStatusCodes
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.libraries.identity.googleid.GoogleIdCredential
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import kotlinx.coroutines.launch
@@ -38,11 +42,42 @@ class LoginFragment : Fragment() {
     private val viewModel: LoginViewModel by viewModels()
 
     @Inject
+    lateinit var identitySignInClient: SignInClient
+
+    @Inject
+    lateinit var signInIntentRequest: GetSignInIntentRequest
+
+    @Inject
     lateinit var googleSignInClient: GoogleSignInClient
 
     private var hasNavigated = false
 
-    private val googleLoginLauncher =
+    private val googleIdentityLauncher =
+        registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
+            val intent = result.data
+            if (intent == null) {
+                if (result.resultCode == Activity.RESULT_CANCELED) {
+                    viewModel.onLoginCancelled()
+                } else {
+                    viewModel.onLoginFailed(null)
+                }
+                return@registerForActivityResult
+            }
+            try {
+                val credential = GoogleIdCredential.fromIntent(intent)
+                viewModel.onGoogleCredentialReceived(credential)
+            } catch (error: ApiException) {
+                when (error.statusCode) {
+                    CommonStatusCodes.CANCELED -> viewModel.onLoginCancelled()
+                    CommonStatusCodes.DEVELOPER_ERROR -> launchLegacySignIn()
+                    else -> viewModel.onLoginFailed(error)
+                }
+            } catch (error: Exception) {
+                viewModel.onLoginFailed(error)
+            }
+        }
+
+    private val legacyGoogleLoginLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             val intent = result.data
             if (intent == null) {
@@ -86,8 +121,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonLogin.setOnClickListener {
             if (viewModel.uiState.value.isLoading) return@setOnClickListener
-            val intent = googleSignInClient.signInIntent
-            googleLoginLauncher.launch(intent)
+            launchIdentitySignIn()
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -96,6 +130,27 @@ class LoginFragment : Fragment() {
                 launch { viewModel.events.collect { handleEvent(it) } }
             }
         }
+    }
+
+    private fun launchIdentitySignIn() {
+        identitySignInClient.getSignInIntent(signInIntentRequest)
+            .addOnSuccessListener { pendingIntent ->
+                val request = IntentSenderRequest.Builder(pendingIntent.intentSender).build()
+                googleIdentityLauncher.launch(request)
+            }
+            .addOnFailureListener { error ->
+                val apiException = (error as? ApiException)
+                if (apiException?.statusCode == CommonStatusCodes.DEVELOPER_ERROR) {
+                    launchLegacySignIn()
+                } else {
+                    viewModel.onLoginFailed(error)
+                }
+            }
+    }
+
+    private fun launchLegacySignIn() {
+        val intent = googleSignInClient.signInIntent
+        legacyGoogleLoginLauncher.launch(intent)
     }
 
     private fun renderState(state: LoginUiState) {

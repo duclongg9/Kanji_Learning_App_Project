@@ -4,6 +4,7 @@ import com.example.kanjilearning.domain.model.User
 import com.example.kanjilearning.domain.repository.UserRepository
 import com.example.kanjilearning.domain.util.Role
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.libraries.identity.googleid.GoogleIdCredential
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.channels.Channel
@@ -46,30 +47,18 @@ class LoginViewModel @Inject constructor(
         }
     }
 
+    fun onGoogleCredentialReceived(credential: GoogleIdCredential) {
+        val googleId = credential.idToken ?: credential.id
+        val email = credential.id
+        val displayName = credential.displayName.orEmpty()
+        persistUser(googleId, email, displayName)
+    }
+
     fun onGoogleAccountReceived(account: GoogleSignInAccount) {
         val googleId = account.id ?: account.idToken ?: account.email
-        if (googleId.isNullOrBlank()) {
-            emitError(LoginEvent.ShowError(LoginErrorType.MissingId))
-            return
-        }
-        viewModelScope.launch {
-            _uiState.update { it.copy(isLoading = true) }
-            try {
-                val user = User(
-                    googleId = googleId,
-                    displayName = account.displayName.orEmpty(),
-                    email = account.email.orEmpty(),
-                    role = Role.FREE,
-                    lastSyncedAt = 0L
-                )
-                userRepository.saveUser(user)
-                _events.send(LoginEvent.NavigateNext)
-            } catch (error: Exception) {
-                emitError(LoginEvent.ShowError(LoginErrorType.SaveFailed(error)))
-            } finally {
-                _uiState.update { it.copy(isLoading = false) }
-            }
-        }
+        val email = account.email
+        val displayName = account.displayName
+        persistUser(googleId, email, displayName)
     }
 
     fun onLoginCancelled() {
@@ -84,6 +73,35 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             _events.send(event)
             _uiState.update { it.copy(isLoading = false) }
+        }
+    }
+
+    private fun persistUser(
+        googleId: String?,
+        email: String?,
+        displayName: String?
+    ) {
+        if (googleId.isNullOrBlank()) {
+            emitError(LoginEvent.ShowError(LoginErrorType.MissingId))
+            return
+        }
+        viewModelScope.launch {
+            _uiState.update { it.copy(isLoading = true) }
+            try {
+                val user = User(
+                    googleId = googleId,
+                    displayName = displayName.orEmpty(),
+                    email = email.orEmpty(),
+                    role = Role.FREE,
+                    lastSyncedAt = 0L
+                )
+                userRepository.saveUser(user)
+                _events.send(LoginEvent.NavigateNext)
+            } catch (error: Exception) {
+                emitError(LoginEvent.ShowError(LoginErrorType.SaveFailed(error)))
+            } finally {
+                _uiState.update { it.copy(isLoading = false) }
+            }
         }
     }
 }
