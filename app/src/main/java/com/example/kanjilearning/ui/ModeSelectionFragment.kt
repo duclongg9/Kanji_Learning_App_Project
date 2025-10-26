@@ -17,7 +17,7 @@ class ModeSelectionFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentModeSelectionBinding.inflate(inflater, container, false)
         return binding.root
@@ -30,7 +30,6 @@ class ModeSelectionFragment : Fragment() {
         }
         binding.cardKanji.setOnClickListener(toProfile)
         binding.cardPractice.setOnClickListener(toProfile)
-        binding.buttonMenu.setOnClickListener(toProfile)
     }
 
     override fun onDestroyView() {

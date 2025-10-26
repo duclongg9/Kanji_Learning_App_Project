@@ -25,11 +25,9 @@ class WelcomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val navigateNext = View.OnClickListener {
+        binding.root.setOnClickListener {
             findNavController().navigate(R.id.action_welcomeFragment_to_loginFragment)
         }
-        binding.cardWelcome.setOnClickListener(navigateNext)
-        binding.buttonGetStarted.setOnClickListener(navigateNext)
     }
 
     override fun onDestroyView() {

@@ -7,10 +7,9 @@
     <string name="welcome_title">HANABI
 KANJI APP</string>
     <string name="welcome_message">chào cậu, chúc cậu học Kanji thật vui cùng Hoa nha</string>
-    <string name="welcome_cta">vào nhà của Hoa</string>
 
     <!-- Login -->
-    <string name="login_badge">đăng nhập</string>
+    <string name="login_badge">cố gắng lên nè</string>
     <string name="login_title">Cậu đăng nhập nhaaa!</string>
     <string name="login_subtitle">học chung mới vui nè, bấm google nha cậu</string>
     <string name="action_login_google">Login with Google</string>
@@ -25,7 +24,7 @@ KANJI APP</string>
     <string name="mode_option_practice">練習</string>
 
     <!-- Profile / personal -->
-    <string name="profile_menu_content_description">Mở bảng thông tin cá nhân</string>
+    <string name="profile_screen_title">Personal screen</string>
     <string name="profile_name">Phạm Đức Long</string>
     <string name="profile_address">Địa chỉ: Đại học FPT HN</string>
     <string name="profile_phone">Số điện thoại: 0385189399</string>
@@ -33,9 +32,6 @@ KANJI APP</string>
     <string name="profile_upgrade">Nâng cấp VIP</string>
     <string name="profile_version">Phiên bản số 1.0.1</string>
     <string name="profile_credit">Design by Hoa Na</string>
-    <string name="profile_continue">Đi tới Kanji</string>
-    <string name="profile_menu_title">thông tin bên lề</string>
-    <string name="profile_menu_hint">cậu nâng cấp tài khoản để mở khóa kanji vip nha</string>
 
     <!-- Kanji screen -->
     <string name="kanji_title">Hoa đã gom Kanji nè</string>
