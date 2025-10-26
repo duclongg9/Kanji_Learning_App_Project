@@ -5,9 +5,9 @@ import android.util.Log
 import com.example.kanjilearning.BuildConfig
 import com.example.kanjilearning.R
 import com.example.kanjilearning.oauth.GoogleOAuthConfig
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.auth.api.identity.GetSignInIntentRequest
+import com.google.android.gms.auth.api.identity.Identity
+import com.google.android.gms.auth.api.identity.SignInClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,16 +33,14 @@ object GoogleAuthModule {
 
     @Provides
     @Singleton
-    fun provideGoogleSignInOptions(
+    fun provideGoogleSignInRequest(
         @ApplicationContext context: Context,
         config: GoogleOAuthConfig
-    ): GoogleSignInOptions {
-        val builder = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestEmail()
-            .requestId()
+    ): GetSignInIntentRequest {
+        val builder = GetSignInIntentRequest.builder()
         val clientId = resolveWebClientId(context, config)
         if (clientId != null) {
-            builder.requestIdToken(clientId)
+            builder.setServerClientId(clientId)
         } else {
             Log.w(
                 "GoogleAuth",
@@ -55,9 +53,8 @@ object GoogleAuthModule {
     @Provides
     @Singleton
     fun provideGoogleSignInClient(
-        @ApplicationContext context: Context,
-        options: GoogleSignInOptions
-    ): GoogleSignInClient = GoogleSignIn.getClient(context, options)
+        @ApplicationContext context: Context
+    ): SignInClient = Identity.getSignInClient(context)
 
     private fun resolveWebClientId(
         context: Context,
