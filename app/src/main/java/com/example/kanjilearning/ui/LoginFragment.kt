@@ -87,19 +87,12 @@ class LoginFragment : Fragment() {
                 }
                 return@registerForActivityResult
             }
-
-            val task = GoogleSignIn.getSignedInAccountFromIntent(intent)
             try {
-                val account = task.getResult(ApiException::class.java)
-                if (account != null) {
-                    viewModel.onGoogleAccountReceived(account)
-                } else {
-                    viewModel.onLoginFailed(null)
-                }
+                val credential = googleSignInClient.getSignInCredentialFromIntent(intent)
+                viewModel.onGoogleCredentialReceived(credential)
             } catch (error: ApiException) {
                 when (error.statusCode) {
-                    CommonStatusCodes.CANCELED, GoogleSignInStatusCodes.SIGN_IN_CANCELLED ->
-                        viewModel.onLoginCancelled()
+                    CommonStatusCodes.CANCELED -> viewModel.onLoginCancelled()
                     else -> viewModel.onLoginFailed(error)
                 }
             } catch (error: Exception) {
