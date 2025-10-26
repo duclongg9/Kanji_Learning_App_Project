@@ -47,18 +47,13 @@ class LoginFragment : Fragment() {
 
     private val googleLoginLauncher =
         registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
-            if (result.resultCode != Activity.RESULT_OK) {
+            val intent = result.data
+            if (intent == null) {
                 if (result.resultCode == Activity.RESULT_CANCELED) {
                     viewModel.onLoginCancelled()
                 } else {
                     viewModel.onLoginFailed(null)
                 }
-                return@registerForActivityResult
-            }
-
-            val intent = result.data
-            if (intent == null) {
-                viewModel.onLoginFailed(null)
                 return@registerForActivityResult
             }
             try {
