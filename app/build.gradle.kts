@@ -100,6 +100,7 @@ dependencies {
     kapt(libs.room.compiler)
     kapt(libs.hilt.compiler)
     kapt(libs.hilt.compiler.androidx)
+    kapt(libs.javapoet)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
