@@ -3,7 +3,7 @@ package com.example.kanjilearning.ui.login
 import com.example.kanjilearning.domain.model.User
 import com.example.kanjilearning.domain.repository.UserRepository
 import com.example.kanjilearning.domain.util.Role
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.identity.SignInCredential
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.channels.Channel
@@ -46,8 +46,8 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun onGoogleAccountReceived(account: GoogleSignInAccount) {
-        val googleId = account.id ?: account.idToken ?: account.email
+    fun onGoogleCredentialReceived(credential: SignInCredential) {
+        val googleId = credential.googleIdToken ?: credential.id
         if (googleId.isNullOrBlank()) {
             emitError(LoginEvent.ShowError(LoginErrorType.MissingId))
             return
@@ -57,8 +57,8 @@ class LoginViewModel @Inject constructor(
             try {
                 val user = User(
                     googleId = googleId,
-                    displayName = account.displayName.orEmpty(),
-                    email = account.email.orEmpty(),
+                    displayName = credential.displayName.orEmpty(),
+                    email = credential.id,
                     role = Role.FREE,
                     lastSyncedAt = 0L
                 )
