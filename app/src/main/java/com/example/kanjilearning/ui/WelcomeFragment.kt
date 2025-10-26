@@ -29,7 +29,6 @@ class WelcomeFragment : Fragment() {
             findNavController().navigate(R.id.action_welcomeFragment_to_loginFragment)
         }
         binding.cardWelcome.setOnClickListener(navigateNext)
-        binding.buttonGetStarted.setOnClickListener(navigateNext)
     }
 
     override fun onDestroyView() {
