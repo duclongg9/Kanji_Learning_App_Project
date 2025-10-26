@@ -34,16 +34,20 @@ object GoogleAuthModule {
     @Provides
     @Singleton
     fun provideGoogleSignInOptions(
+        @ApplicationContext context: Context,
         config: GoogleOAuthConfig
     ): GoogleSignInOptions {
         val builder = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
             .requestId()
-        val clientId = config.clientId.ifBlank { BuildConfig.GOOGLE_WEB_CLIENT_ID }.trim()
-        if (clientId.isNotEmpty()) {
+        val clientId = resolveWebClientId(context, config)
+        if (clientId != null) {
             builder.requestIdToken(clientId)
         } else {
-            Log.w("GoogleAuth", "Missing Google OAuth client ID – continuing without ID token requests")
+            Log.w(
+                "GoogleAuth",
+                "Missing Google OAuth client ID – continuing without ID token requests"
+            )
         }
         return builder.build()
     }
@@ -54,4 +58,32 @@ object GoogleAuthModule {
         @ApplicationContext context: Context,
         options: GoogleSignInOptions
     ): GoogleSignInClient = GoogleSignIn.getClient(context, options)
+
+    private fun resolveWebClientId(
+        context: Context,
+        config: GoogleOAuthConfig
+    ): String? {
+        val candidateIds = sequence {
+            yield(config.clientId)
+            yield(readStringResource(context, "default_web_client_id"))
+            yield(BuildConfig.GOOGLE_WEB_CLIENT_ID)
+        }
+            .mapNotNull { it?.trim() }
+            .filter { it.isNotEmpty() && !it.contains("placeholder", ignoreCase = true) }
+
+        return candidateIds.firstOrNull()
+    }
+
+    private fun readStringResource(
+        context: Context,
+        name: String
+    ): String? {
+        val resId = context.resources.getIdentifier(name, "string", context.packageName)
+        if (resId == 0) return null
+        return runCatching { context.getString(resId).trim() }
+            .getOrElse {
+                Log.w("GoogleAuth", "Failed to read string resource '$name'", it)
+                null
+            }
+    }
 }
