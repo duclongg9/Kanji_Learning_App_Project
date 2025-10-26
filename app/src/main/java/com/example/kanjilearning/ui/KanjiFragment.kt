@@ -4,15 +4,28 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kanjilearning.databinding.FragmentKanjiBinding
+import com.example.kanjilearning.ui.kanji.KanjiSectionAdapter
+import com.example.kanjilearning.ui.kanji.KanjiViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class KanjiFragment : Fragment() {
 
     private var _binding: FragmentKanjiBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: KanjiViewModel by viewModels()
+
+    private val kanjiAdapter = KanjiSectionAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,34 +38,27 @@ class KanjiFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val sections = listOf(
-            KanjiSection(binding.headerN5, binding.contentN5, binding.iconN5),
-            KanjiSection(binding.headerN4, binding.contentN4, binding.iconN4),
-            KanjiSection(binding.headerN3, binding.contentN3, binding.iconN3),
-            KanjiSection(binding.headerN2, binding.contentN2, binding.iconN2),
-            KanjiSection(binding.headerN1, binding.contentN1, binding.iconN1),
-        )
-
-        sections.forEach { section ->
-            section.header.setOnClickListener { toggleSection(section) }
+        binding.recyclerKanji.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = kanjiAdapter
+            itemAnimator = null
         }
-    }
 
-    private fun toggleSection(section: KanjiSection) {
-        val shouldExpand = !section.content.isVisible
-        section.content.visibility = if (shouldExpand) View.VISIBLE else View.GONE
-        val rotation = if (shouldExpand) 180f else 0f
-        section.icon.animate().rotation(rotation).setDuration(200).start()
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { state ->
+                    binding.progressKanji.isVisible = state.isLoading
+                    val hasContent = state.sections.any { it.entries.isNotEmpty() }
+                    binding.recyclerKanji.isVisible = hasContent
+                    binding.textKanjiEmpty.isVisible = !state.isLoading && !hasContent
+                    kanjiAdapter.submitList(state.sections)
+                }
+            }
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
-    private data class KanjiSection(
-        val header: View,
-        val content: View,
-        val icon: ImageView,
-    )
 }

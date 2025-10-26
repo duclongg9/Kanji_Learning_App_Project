@@ -114,8 +114,9 @@
                         android:padding="24dp">
 
                         <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/textEmail"
                             style="@style/AppText.Body"
-                            android:text="@string/profile_address" />
+                            android:text="@string/profile_email_placeholder" />
 
                         <View
                             android:layout_width="match_parent"
@@ -125,8 +126,9 @@
                             android:alpha="0.2" />
 
                         <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/textSync"
                             style="@style/AppText.Body"
-                            android:text="@string/profile_phone" />
+                            android:text="@string/profile_sync_placeholder" />
 
                         <View
                             android:layout_width="match_parent"
@@ -136,6 +138,7 @@
                             android:alpha="0.2" />
 
                         <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/textVersion"
                             style="@style/AppText.Body"
                             android:text="@string/profile_version" />
 
