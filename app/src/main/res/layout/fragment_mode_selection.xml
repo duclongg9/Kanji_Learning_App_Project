@@ -44,8 +44,8 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardKanji"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="163dp"
+                android:layout_height="157dp"
                 android:layout_marginTop="48dp"
                 app:cardBackgroundColor="@color/select_option_background"
                 app:cardCornerRadius="50dp"
@@ -58,8 +58,8 @@
                 app:strokeWidth="0dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="191dp"
+                    android:layout_height="wrap_content"
                     android:padding="32dp">
 
                     <com.google.android.material.textview.MaterialTextView
@@ -67,33 +67,22 @@
                         style="@style/AppText.Hero"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
                         android:gravity="center"
                         android:text="@string/mode_option_study"
                         android:textAlignment="center"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/textModeKanjiLabel"
-                        style="@style/AppText.BodyLarge"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:gravity="center"
-                        android:textColor="@color/text_primary"
-                        android:text="@string/mode_option_study_label"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/textModeKanji" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardPractice"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="172dp"
+                android:layout_height="163dp"
                 android:layout_marginTop="56dp"
                 app:cardBackgroundColor="@color/select_option_background"
                 app:cardCornerRadius="50dp"
@@ -106,8 +95,8 @@
                 app:strokeWidth="0dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="186dp"
+                    android:layout_height="wrap_content"
                     android:padding="32dp">
 
                     <com.google.android.material.textview.MaterialTextView
@@ -115,6 +104,7 @@
                         style="@style/AppText.Hero"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:gravity="center"
                         android:text="@string/mode_option_practice"
                         android:textAlignment="center"
@@ -122,19 +112,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/textModePracticeLabel"
-                        style="@style/AppText.BodyLarge"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:gravity="center"
-                        android:textColor="@color/text_primary"
-                        android:text="@string/mode_option_practice_label"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/textModePractice" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
