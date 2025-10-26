@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/background_base">
 
-
-
     <com.google.android.material.card.MaterialCardView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -28,18 +26,18 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingHorizontal="36dp"
-            android:paddingVertical="40dp">
+            android:paddingHorizontal="48dp"
+            android:paddingVertical="48dp">
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textModeTitle"
-                style="@style/AppText.Hero"
+                android:id="@+id/textModeInstructionStudy"
+                style="@style/AppText.BodyLarge"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/mode_title"
                 android:gravity="center"
+                android:text="@string/mode_instruction_top"
                 android:textAlignment="center"
+                android:textColor="@color/text_primary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -79,9 +77,11 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/textModeKanjiLabel"
                         style="@style/AppText.BodyLarge"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:textColor="@color/text_primary"
                         android:text="@string/mode_option_study_label"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -94,30 +94,30 @@
                 android:id="@+id/cardPractice"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="56dp"
                 app:cardBackgroundColor="@color/select_option_background"
-                app:cardCornerRadius="40dp"
+                app:cardCornerRadius="50dp"
                 app:cardElevation="0dp"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_weight="1"
-                app:layout_constraintStart_toEndOf="@id/cardKanji"
-                app:layout_constraintTop_toBottomOf="@id/textModeTitle"
-                app:strokeColor="@color/text_primary"
-                app:strokeWidth="1dp">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardKanji"
+                app:strokeColor="@android:color/transparent"
+                app:strokeWidth="0dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="24dp">
+                    android:padding="32dp">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/textModePractice"
                         style="@style/AppText.Hero"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:text="@string/mode_option_practice"
+                        android:textAlignment="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -125,9 +125,11 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/textModePracticeLabel"
                         style="@style/AppText.BodyLarge"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:textColor="@color/text_primary"
                         android:text="@string/mode_option_practice_label"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -137,26 +139,19 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textModeInstructionStudy"
-                style="@style/AppText.BodyLarge"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/mode_instruction_top"
-                app:layout_constraintEnd_toEndOf="@id/cardKanji"
-                app:layout_constraintStart_toStartOf="@id/cardKanji"
-                app:layout_constraintTop_toBottomOf="@id/cardKanji" />
-
-            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textModeInstructionPractice"
                 style="@style/AppText.BodyLarge"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="56dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
                 android:text="@string/mode_instruction_bottom"
-                android:textAlignment="viewEnd"
-                app:layout_constraintEnd_toEndOf="@id/cardPractice"
-                app:layout_constraintStart_toStartOf="@id/cardPractice"
+                android:textAlignment="center"
+                android:textColor="@color/text_primary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardPractice" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
