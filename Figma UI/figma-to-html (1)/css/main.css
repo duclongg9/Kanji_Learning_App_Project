@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+}
+.v601_10 {
+  width: 100%;
+  height: 1734px;
+  background: rgba(226,191,191,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  overflow: hidden;
+}
+.v601_11 {
+  width: 781px;
+  height: 187px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 867px;
+  left: 158px;
+  border-top-left-radius: 90px;
+  border-top-right-radius: 90px;
+  border-bottom-left-radius: 90px;
+  border-bottom-right-radius: 90px;
+  overflow: hidden;
+}
+.v601_12 {
+  width: 552px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 51px;
+  left: 115px;
+  font-family: Inter;
+  font-weight: Regular;
+  font-size: 64px;
+  opacity: 1;
+  text-align: left;
+}
+.v601_76 {
+  width: 644px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 635px;
+  left: 227px;
+  font-family: Figma Hand;
+  font-weight: Regular;
+  font-size: 48px;
+  opacity: 1;
+  text-align: center;
+}

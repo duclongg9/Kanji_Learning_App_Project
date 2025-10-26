@@ -1,0 +1,99 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+}
+.v601_79 {
+  width: 100%;
+  height: 1734px;
+  background: rgba(226,191,191,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  overflow: hidden;
+}
+.v601_84 {
+  width: 494px;
+  height: 454px;
+  background: rgba(248,229,229,1);
+  opacity: 1;
+  position: absolute;
+  top: 308px;
+  left: 302px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  overflow: hidden;
+}
+.v601_89 {
+  width: 249px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 158px;
+  left: 122px;
+  font-family: Figma Hand;
+  font-weight: Regular;
+  font-size: 96px;
+  opacity: 1;
+  text-align: center;
+}
+.v601_85 {
+  width: 494px;
+  height: 454px;
+  background: rgba(248,229,229,1);
+  opacity: 1;
+  position: absolute;
+  top: 1024px;
+  left: 302px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  overflow: hidden;
+}
+.v601_90 {
+  width: 303px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 151px;
+  left: 95px;
+  font-family: Figma Hand;
+  font-weight: Regular;
+  font-size: 96px;
+  opacity: 1;
+  text-align: center;
+}
+.v601_87 {
+  width: 537px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 209px;
+  left: 280px;
+  font-family: Figma Hand;
+  font-weight: Regular;
+  font-size: 32px;
+  opacity: 1;
+  text-align: center;
+}
+.v601_88 {
+  width: 582px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 1498px;
+  left: 258px;
+  font-family: Figma Hand;
+  font-weight: Regular;
+  font-size: 32px;
+  opacity: 1;
+  text-align: center;
+}
+.name {
+  color: #fff;
+}

@@ -1,0 +1,200 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+}
+.v601_2563 {
+  width: 100%;
+  height: 1734px;
+  background: rgba(226,191,191,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  overflow: hidden;
+}
+.v601_2564 {
+  width: 494px;
+  height: 454px;
+  background: rgba(248,229,229,1);
+  opacity: 1;
+  position: absolute;
+  top: 308px;
+  left: 302px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  overflow: hidden;
+}
+.v601_2565 {
+  width: 249px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 158px;
+  left: 122px;
+  font-family: Figma Hand;
+  font-weight: Regular;
+  font-size: 96px;
+  opacity: 1;
+  text-align: center;
+}
+.v601_2566 {
+  width: 494px;
+  height: 454px;
+  background: rgba(248,229,229,1);
+  opacity: 1;
+  position: absolute;
+  top: 1024px;
+  left: 302px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  overflow: hidden;
+}
+.v601_2567 {
+  width: 303px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 151px;
+  left: 95px;
+  font-family: Figma Hand;
+  font-weight: Regular;
+  font-size: 96px;
+  opacity: 1;
+  text-align: center;
+}
+.v601_2568 {
+  width: 537px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 209px;
+  left: 280px;
+  font-family: Figma Hand;
+  font-weight: Regular;
+  font-size: 32px;
+  opacity: 1;
+  text-align: center;
+}
+.v601_2569 {
+  width: 582px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 1498px;
+  left: 258px;
+  font-family: Figma Hand;
+  font-weight: Regular;
+  font-size: 32px;
+  opacity: 1;
+  text-align: center;
+}
+.v601_2582 {
+  width: 650px;
+  height: 100%;
+  background: rgba(236,222,222,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  overflow: hidden;
+}
+.name {
+  color: #fff;
+}
+.name {
+  color: #fff;
+}
+.v601_2611 {
+  width: 377px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 308px;
+  left: 127px;
+  font-family: Roboto;
+  font-weight: Regular;
+  font-size: 48px;
+  opacity: 1;
+  text-align: center;
+}
+.v601_2614 {
+  width: 448px;
+  height: 112px;
+  background: rgba(217,217,217,1);
+  opacity: 1;
+  position: absolute;
+  top: 706px;
+  left: 78px;
+  border-top-left-radius: 70px;
+  border-top-right-radius: 70px;
+  border-bottom-left-radius: 70px;
+  border-bottom-right-radius: 70px;
+  overflow: hidden;
+}
+.v601_2619 {
+  width: 280px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 748px;
+  left: 164px;
+  font-family: Roboto;
+  font-weight: Regular;
+  font-size: 32px;
+  opacity: 1;
+  text-align: center;
+}
+.v601_2620 {
+  width: 401px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 604px;
+  left: 99px;
+  font-family: Roboto;
+  font-weight: Regular;
+  font-size: 32px;
+  opacity: 1;
+  text-align: center;
+}
+.v601_2621 {
+  width: 401px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 532px;
+  left: 99px;
+  font-family: Roboto;
+  font-weight: Regular;
+  font-size: 32px;
+  opacity: 1;
+  text-align: center;
+}
+.v601_2623 {
+  width: 401px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 461px;
+  left: 99px;
+  font-family: Roboto;
+  font-weight: Regular;
+  font-size: 32px;
+  opacity: 1;
+  text-align: center;
+}
+.v601_2625 {
+  width: 336px;
+  color: rgba(63,37,37,1);
+  position: absolute;
+  top: 1611px;
+  left: 142px;
+  font-family: Roboto;
+  font-weight: Regular;
+  font-size: 20px;
+  opacity: 1;
+  text-align: center;
+}
