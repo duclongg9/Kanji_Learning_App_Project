@@ -14,6 +14,10 @@ KANJI APP</string>
     <string name="login_title">Cậu đăng nhập nhaaa!</string>
     <string name="login_subtitle">học chung mới vui nè, bấm google nha cậu</string>
     <string name="action_login_google">Login with Google</string>
+    <string name="login_error_cancelled">Cậu đã huỷ đăng nhập Google.</string>
+    <string name="login_error_missing_id">Không thể xác định tài khoản Google, thử lại nhé!</string>
+    <string name="login_error_sign_in_failed">Đăng nhập Google bị lỗi, cậu thử lại sau nha.</string>
+    <string name="login_error_save_failed">Lưu thông tin đăng nhập không thành công, thử lại lần nữa nhé.</string>
 
     <!-- Mode selection -->
     <string name="mode_title">Hôm nay cậu muốn học gì?</string>
@@ -36,6 +40,14 @@ KANJI APP</string>
     <string name="profile_continue">Đi tới Kanji</string>
     <string name="profile_menu_title">thông tin bên lề</string>
     <string name="profile_menu_hint">cậu nâng cấp tài khoản để mở khóa kanji vip nha</string>
+    <string name="profile_role_free">Tài khoản miễn phí</string>
+    <string name="profile_role_vip">Tài khoản VIP</string>
+    <string name="profile_role_admin">Quản trị viên</string>
+    <string name="profile_email_placeholder">Email: cập nhật sau</string>
+    <string name="profile_sync_placeholder">Đồng bộ lần cuối: --</string>
+    <string name="profile_email_format">Email: %1$s</string>
+    <string name="profile_last_sync_format">Đồng bộ lần cuối: %1$s</string>
+    <string name="profile_sync_never">Đồng bộ lần cuối: chưa có</string>
 
     <!-- Kanji screen -->
     <string name="kanji_title">Hoa đã gom Kanji nè</string>
@@ -49,4 +61,8 @@ KANJI APP</string>
     <string name="kanji_option_intermediate">Trung cấp</string>
     <string name="kanji_option_advanced">Cao cấp</string>
     <string name="kanji_option_vip">VIP</string>
+    <string name="kanji_section_level_format">Kanji cấp độ %1$s</string>
+    <string name="kanji_section_empty">Chưa có Kanji miễn phí ở cấp độ này.</string>
+    <string name="kanji_entry_pronunciation_format">On: %1$s • Kun: %2$s</string>
+    <string name="kanji_entry_difficulty_format">Độ khó: %1$d/10</string>
 </resources>
