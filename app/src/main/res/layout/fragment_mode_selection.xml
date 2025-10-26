@@ -44,8 +44,8 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardKanji"
-                android:layout_width="163dp"
-                android:layout_height="157dp"
+                android:layout_width="194dp"
+                android:layout_height="179dp"
                 android:layout_marginTop="48dp"
                 app:cardBackgroundColor="@color/select_option_background"
                 app:cardCornerRadius="50dp"
@@ -58,8 +58,8 @@
                 app:strokeWidth="0dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="191dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:padding="32dp">
 
                     <com.google.android.material.textview.MaterialTextView
@@ -67,12 +67,11 @@
                         style="@style/AppText.Hero"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="16dp"
                         android:gravity="center"
                         android:text="@string/mode_option_study"
                         android:textAlignment="center"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,8 +80,8 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardPractice"
-                android:layout_width="172dp"
-                android:layout_height="163dp"
+                android:layout_width="199dp"
+                android:layout_height="190dp"
                 android:layout_marginTop="56dp"
                 app:cardBackgroundColor="@color/select_option_background"
                 app:cardCornerRadius="50dp"
@@ -95,8 +94,8 @@
                 app:strokeWidth="0dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="186dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:padding="32dp">
 
                     <com.google.android.material.textview.MaterialTextView
@@ -104,11 +103,12 @@
                         style="@style/AppText.Hero"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="20dp"
                         android:gravity="center"
                         android:text="@string/mode_option_practice"
                         android:textAlignment="center"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.478"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
