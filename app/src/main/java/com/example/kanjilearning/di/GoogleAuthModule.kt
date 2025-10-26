@@ -8,6 +8,9 @@ import com.example.kanjilearning.oauth.GoogleOAuthConfig
 import com.google.android.gms.auth.api.identity.GetSignInIntentRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,6 +37,31 @@ object GoogleAuthModule {
     @Provides
     @Singleton
     fun provideGoogleSignInRequest(
+        @ApplicationContext context: Context,
+        config: GoogleOAuthConfig
+    ): GetSignInIntentRequest {
+        val builder = GetSignInIntentRequest.builder()
+        val clientId = resolveWebClientId(context, config)
+        if (clientId != null) {
+            builder.setServerClientId(clientId)
+        } else {
+            Log.w(
+                "GoogleAuth",
+                "Missing Google OAuth client ID – continuing without ID token requests"
+            )
+        }
+        return builder.build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideIdentitySignInClient(
+        @ApplicationContext context: Context
+    ): SignInClient = Identity.getSignInClient(context)
+
+    @Provides
+    @Singleton
+    fun provideGoogleSignInOptions(
         @ApplicationContext context: Context,
         config: GoogleOAuthConfig
     ): GetSignInIntentRequest {
