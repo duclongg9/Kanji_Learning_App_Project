@@ -123,9 +123,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:value="1"
-            app:valueFrom="1"
-            app:valueTo="9"
-            app:stepSize="1"
+            android:valueFrom="1"
+            android:valueTo="9"
+            android:stepSize="1"
             app:labelBehavior="gone" />
 
     </LinearLayout>

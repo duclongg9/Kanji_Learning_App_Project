@@ -64,11 +64,14 @@ object GoogleAuthModule {
     fun provideGoogleSignInOptions(
         @ApplicationContext context: Context,
         config: GoogleOAuthConfig
-    ): GetSignInIntentRequest {
-        val builder = GetSignInIntentRequest.builder()
+    ): GoogleSignInOptions {
+        val builder = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+
+
         val clientId = resolveWebClientId(context, config)
         if (clientId != null) {
-            builder.setServerClientId(clientId)
+            builder.requestIdToken(clientId)
         } else {
             Log.w(
                 "GoogleAuth",
@@ -81,8 +84,9 @@ object GoogleAuthModule {
     @Provides
     @Singleton
     fun provideGoogleSignInClient(
-        @ApplicationContext context: Context
-    ): SignInClient = Identity.getSignInClient(context)
+        @ApplicationContext context: Context,
+        options: GoogleSignInOptions
+    ): GoogleSignInClient = GoogleSignIn.getClient(context, options)
 
     private fun resolveWebClientId(
         context: Context,
