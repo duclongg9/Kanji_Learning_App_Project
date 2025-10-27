@@ -9,23 +9,35 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kanjilearning.R
 import com.example.kanjilearning.databinding.ItemKanjiEntryBinding
 import com.example.kanjilearning.databinding.ItemKanjiLevelBinding
+import com.example.kanjilearning.domain.util.AccessTier
 
 /**
  * VI: Adapter hiển thị từng nhóm Kanji theo cấp độ JLPT.
  */
-class KanjiSectionAdapter : ListAdapter<KanjiSectionUi, KanjiSectionViewHolder>(Diff) {
+class KanjiSectionAdapter(
+    private val onEdit: (KanjiEntryUi) -> Unit,
+    private val onDelete: (KanjiEntryUi) -> Unit
+) : ListAdapter<KanjiSectionUi, KanjiSectionViewHolder>(Diff) {
 
     private val expandedLevels = mutableSetOf<String>()
+    private var canManage: Boolean = false
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): KanjiSectionViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemKanjiLevelBinding.inflate(inflater, parent, false)
-        return KanjiSectionViewHolder(binding, ::toggleLevel)
+        return KanjiSectionViewHolder(binding, ::toggleLevel, onEdit, onDelete)
     }
 
     override fun onBindViewHolder(holder: KanjiSectionViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item, expandedLevels.contains(item.level.label))
+        holder.bind(item, expandedLevels.contains(item.level.label), canManage)
+    }
+
+    fun updateManageable(value: Boolean) {
+        if (canManage != value) {
+            canManage = value
+            notifyDataSetChanged()
+        }
     }
 
     private fun toggleLevel(level: String) {
@@ -46,10 +58,12 @@ class KanjiSectionAdapter : ListAdapter<KanjiSectionUi, KanjiSectionViewHolder>(
 
 class KanjiSectionViewHolder(
     private val binding: ItemKanjiLevelBinding,
-    private val onToggle: (String) -> Unit
+    private val onToggle: (String) -> Unit,
+    private val onEdit: (KanjiEntryUi) -> Unit,
+    private val onDelete: (KanjiEntryUi) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(section: KanjiSectionUi, expanded: Boolean) {
+    fun bind(section: KanjiSectionUi, expanded: Boolean, canManage: Boolean) {
         val context = binding.root.context
         binding.tvTitle.text =
             context.getString(R.string.kanji_section_level_format, section.level.label)
@@ -68,6 +82,16 @@ class KanjiSectionViewHolder(
                     context.getString(R.string.kanji_entry_pronunciation_format, entry.onyomi, entry.kunyomi)
                 itemBinding.textDifficulty.text =
                     context.getString(R.string.kanji_entry_difficulty_format, entry.difficulty)
+                val tierLabel = when (entry.accessTier) {
+                    AccessTier.FREE -> context.getString(R.string.kanji_tier_free)
+                    AccessTier.VIP -> context.getString(R.string.kanji_tier_vip)
+                }
+                itemBinding.textTier.text =
+                    context.getString(R.string.kanji_entry_tier_format, tierLabel)
+                itemBinding.buttonEdit.isVisible = canManage
+                itemBinding.buttonDelete.isVisible = canManage
+                itemBinding.buttonEdit.setOnClickListener { onEdit(entry) }
+                itemBinding.buttonDelete.setOnClickListener { onDelete(entry) }
                 binding.sublevels.addView(itemBinding.root)
             }
         }

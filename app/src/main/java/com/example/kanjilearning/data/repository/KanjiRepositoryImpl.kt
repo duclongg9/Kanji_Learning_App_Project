@@ -37,7 +37,7 @@ class KanjiRepositoryImpl @Inject constructor(
             .onStart {
                 try {
                     val remoteKanji = remoteDataSource.fetchKanjiCatalog(allowedTiers)
-                    localDataSource.replaceAll(remoteKanji.map(KanjiEntity.Companion::fromDomain))
+                    localDataSource.replaceAll(remoteKanji.map(::normalize))
                 } catch (error: Exception) {
                     Log.w(TAG, "Không thể đồng bộ Kanji từ MySQL", error)
                 }
@@ -49,8 +49,36 @@ class KanjiRepositoryImpl @Inject constructor(
      * VI: Import danh sách Kanji mới (ví dụ admin upload CSV).
      */
     override suspend fun importKanji(items: List<Kanji>) {
-        localDataSource.importKanji(items.map(KanjiEntity.Companion::fromDomain))
+        localDataSource.importKanji(items.map(::normalize))
     }
+
+    override suspend fun createKanji(kanji: Kanji): Long {
+        val normalized = kanji.normalizeDifficulty()
+        val saved = remoteDataSource.insertKanji(normalized)
+        localDataSource.upsert(KanjiEntity.fromDomain(saved))
+        return saved.id
+    }
+
+    override suspend fun updateKanji(kanji: Kanji) {
+        val normalized = kanji.normalizeDifficulty()
+        remoteDataSource.updateKanji(normalized)
+        localDataSource.upsert(KanjiEntity.fromDomain(normalized))
+    }
+
+    override suspend fun deleteKanji(id: Long) {
+        remoteDataSource.deleteKanji(id)
+        localDataSource.delete(id)
+    }
+
+    private fun Kanji.normalizeDifficulty(): Kanji = copy(difficulty = when (jlptLevel) {
+        JlptLevel.N5 -> 1
+        JlptLevel.N4 -> 3
+        JlptLevel.N3 -> 5
+        JlptLevel.N2 -> 7
+        JlptLevel.N1 -> 9
+    })
+
+    private fun normalize(kanji: Kanji): KanjiEntity = KanjiEntity.fromDomain(kanji.normalizeDifficulty())
 
     companion object {
         private const val TAG = "KanjiRepository"

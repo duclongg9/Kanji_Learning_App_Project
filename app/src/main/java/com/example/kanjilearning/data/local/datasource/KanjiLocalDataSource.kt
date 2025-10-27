@@ -37,4 +37,16 @@ class KanjiLocalDataSource @Inject constructor(
     suspend fun replaceAll(items: List<KanjiEntity>) {
         kanjiDao.replaceAll(items)
     }
+
+    /**
+     * VI: Lưu hoặc cập nhật một Kanji.
+     */
+    suspend fun upsert(kanji: KanjiEntity): Long = kanjiDao.upsert(kanji)
+
+    /**
+     * VI: Xoá Kanji theo ID.
+     */
+    suspend fun delete(id: Long) {
+        kanjiDao.deleteById(id)
+    }
 }
