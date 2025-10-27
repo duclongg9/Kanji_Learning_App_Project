@@ -65,4 +65,17 @@ KANJI APP</string>
     <string name="kanji_section_empty">Chưa có Kanji miễn phí ở cấp độ này.</string>
     <string name="kanji_entry_pronunciation_format">On: %1$s • Kun: %2$s</string>
     <string name="kanji_entry_difficulty_format">Độ khó: %1$d/10</string>
+    <string name="kanji_entry_tier_format">Quyền truy cập: %1$s</string>
+    <string name="kanji_tier_free">Miễn phí</string>
+    <string name="kanji_tier_vip">VIP lung linh</string>
+    <string name="kanji_action_add">thêm Kanji mới</string>
+    <string name="kanji_action_edit">sửa Kanji này</string>
+    <string name="kanji_action_delete">xoá Kanji này</string>
+    <string name="kanji_action_update">lưu thay đổi</string>
+    <string name="kanji_message_created">Đã thêm Kanji mới thật xinh xắn!</string>
+    <string name="kanji_message_updated">Đã cập nhật Kanji, nhìn cưng hơn rồi!</string>
+    <string name="kanji_message_deleted">Kanji đã được tạm biệt nhẹ nhàng.</string>
+    <string name="kanji_error_character_required">Cậu điền ký tự Kanji giúp Hoa nha.</string>
+    <string name="kanji_error_meaning_required">Hoa cần ý nghĩa để ghi chú lại nè.</string>
+    <string name="kanji_delete_confirm">Cậu chắc chắn muốn tạm biệt chữ %1$s không?</string>
 </resources>

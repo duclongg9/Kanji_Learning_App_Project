@@ -24,4 +24,19 @@ interface KanjiRepository {
      * VI: Import danh sách Kanji mới (dành cho admin).
      */
     suspend fun importKanji(items: List<Kanji>)
+
+    /**
+     * VI: Tạo mới một Kanji và trả về ID bản ghi trong cụm trình độ.
+     */
+    suspend fun createKanji(kanji: Kanji): Long
+
+    /**
+     * VI: Cập nhật nội dung Kanji hiện có.
+     */
+    suspend fun updateKanji(kanji: Kanji)
+
+    /**
+     * VI: Xoá Kanji khỏi hệ thống.
+     */
+    suspend fun deleteKanji(id: Long)
 }
