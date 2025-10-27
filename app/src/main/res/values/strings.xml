@@ -17,6 +17,8 @@ KANJI APP</string>
     <string name="login_error_cancelled">Cậu đã huỷ đăng nhập Google.</string>
     <string name="login_error_missing_id">Không thể xác định tài khoản Google, thử lại nhé!</string>
     <string name="login_error_sign_in_failed">Đăng nhập Google bị lỗi, cậu thử lại sau nha.</string>
+    <string name="login_error_sign_in_developer_error">Đăng nhập Google bị lỗi vì cấu hình OAuth chưa chính xác (DEVELOPER_ERROR - 10).&#10;• Package name: %1$s&#10;• OAuth client ID đang dùng: %2$s&#10;Hãy thêm SHA-1 của bản build (debug/release) vào Google Cloud Console và tải lại file google-services.json mới nhất.</string>
+    <string name="login_error_sign_in_developer_error_unknown_id">không xác định</string>
     <string name="login_error_save_failed">Lưu thông tin đăng nhập không thành công, thử lại lần nữa nhé.</string>
 
     <!-- Mode selection -->
