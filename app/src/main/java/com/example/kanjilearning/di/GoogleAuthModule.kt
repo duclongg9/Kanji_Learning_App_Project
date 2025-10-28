@@ -30,8 +30,16 @@ object GoogleAuthModule {
     fun provideGoogleOAuthConfig(
         @ApplicationContext context: Context
     ): GoogleOAuthConfig {
-        return GoogleOAuthConfig.fromRawResource(context, R.raw.google_oauth_client)
-            ?: GoogleOAuthConfig(BuildConfig.GOOGLE_WEB_CLIENT_ID)
+        val candidateResources = listOf(
+            R.raw.oauth_client,
+            R.raw.google_oauth_client
+        )
+
+        candidateResources.forEach { resId ->
+            GoogleOAuthConfig.fromRawResource(context, resId)?.let { return it }
+        }
+
+        return GoogleOAuthConfig(BuildConfig.GOOGLE_WEB_CLIENT_ID)
     }
 
     @Provides
