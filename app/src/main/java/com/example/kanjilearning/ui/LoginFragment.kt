@@ -6,8 +6,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.IntentSenderRequest
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RawRes
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -59,8 +60,7 @@ class LoginFragment : Fragment() {
 
     private val googleIdentityLauncher =
         registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
-            val intent = result.data
-            if (intent == null) {
+            if (result.resultCode != Activity.RESULT_OK) {
                 if (result.resultCode == Activity.RESULT_CANCELED) {
                     viewModel.onLoginCancelled()
                 } else {
@@ -68,6 +68,7 @@ class LoginFragment : Fragment() {
                 }
                 return@registerForActivityResult
             }
+            val intent = result.data
             try {
                 val credential = identitySignInClient.getSignInCredentialFromIntent(intent)
                 viewModel.onGoogleCredentialReceived(credential)
@@ -87,13 +88,17 @@ class LoginFragment : Fragment() {
 
     private val legacyGoogleLoginLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            val intent = result.data
-            if (intent == null) {
+            if (result.resultCode != Activity.RESULT_OK) {
                 if (result.resultCode == Activity.RESULT_CANCELED) {
                     viewModel.onLoginCancelled()
                 } else {
                     viewModel.onLoginFailed(null)
                 }
+                return@registerForActivityResult
+            }
+            val intent = result.data
+            if (intent == null) {
+                viewModel.onLoginFailed(null)
                 return@registerForActivityResult
             }
             try {
@@ -233,7 +238,8 @@ class LoginFragment : Fragment() {
         val context = requireContext()
         val packageName = context.packageName
         val candidateSources = listOf(
-            "res/raw/google_oauth_client.json" to googleOAuthConfig.clientId,
+            "res/raw/oauth_client.json" to readOAuthClientId(R.raw.oauth_client),
+            "res/raw/google_oauth_client.json" to readOAuthClientId(R.raw.google_oauth_client),
             "res/values/strings.xml#default_web_client_id" to readStringResource("default_web_client_id"),
             "BuildConfig.GOOGLE_WEB_CLIENT_ID" to BuildConfig.GOOGLE_WEB_CLIENT_ID
         ).map { (source, value) -> source to value?.trim().orEmpty() }
@@ -275,6 +281,11 @@ class LoginFragment : Fragment() {
         if (resId == 0) return null
         return runCatching { context.getString(resId).trim() }
             .getOrNull()
+    }
+
+    private fun readOAuthClientId(@RawRes resId: Int): String? {
+        val context = requireContext()
+        return GoogleOAuthConfig.fromRawResource(context, resId)?.clientId
     }
 
     private data class DeveloperErrorInfo(
