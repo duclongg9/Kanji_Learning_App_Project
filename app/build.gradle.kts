@@ -3,19 +3,9 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.hilt.android)
-    id("com.google.gms.google-services")
 }
 
-fun String.escapeForJava(): String = replace("\"", "\\\"")
-
 val javapoetVersion = libs.versions.javapoet.get()
-
-val mysqlHost = providers.gradleProperty("MYSQL_HOST").orElse("10.0.2.2")
-val mysqlPort = providers.gradleProperty("MYSQL_PORT").orElse("3306")
-val mysqlDbName = providers.gradleProperty("MYSQL_DB_NAME").orElse("kanji_app")
-val mysqlUser = providers.gradleProperty("MYSQL_USER").orElse("root")
-val mysqlPassword = providers.gradleProperty("MYSQL_PASSWORD").orElse("123456")
-val googleWebClientId = providers.gradleProperty("GOOGLE_WEB_CLIENT_ID").orElse("")
 
 configurations.configureEach {
     resolutionStrategy.eachDependency {
@@ -25,8 +15,6 @@ configurations.configureEach {
         }
     }
 }
-
-
 
 android {
     namespace = "com.example.kanjilearning"
@@ -39,14 +27,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "com.example.kanjilearning.KanjiTestRunner"
-
-        buildConfigField("String", "MYSQL_HOST", "\"${mysqlHost.get().escapeForJava()}\"")
-        buildConfigField("int", "MYSQL_PORT", mysqlPort.get())
-        buildConfigField("String", "MYSQL_DB_NAME", "\"${mysqlDbName.get().escapeForJava()}\"")
-        buildConfigField("String", "MYSQL_USER", "\"${mysqlUser.get().escapeForJava()}\"")
-        buildConfigField("String", "MYSQL_PASSWORD", "\"${mysqlPassword.get().escapeForJava()}\"")
-        buildConfigField("String", "GOOGLE_WEB_CLIENT_ID", "\"${googleWebClientId.get().escapeForJava()}\"")
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -54,14 +35,13 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
 
     buildFeatures {
         viewBinding = true
-        buildConfig = true
     }
 
     compileOptions {
@@ -86,39 +66,24 @@ dependencies {
             because("Ensure KAPT resolves Javapoet $javapoetVersion so processors can access ClassName.canonicalName().")
         }
     }
+
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
-    implementation(libs.activity.ktx)
-    implementation(libs.fragment.ktx)
-    implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.lifecycle.viewmodel.ktx)
-    implementation(libs.navigation.fragment.ktx)
-    implementation(libs.navigation.ui.ktx)
-    implementation(libs.play.services.auth)
-    implementation(libs.googleid)
-    implementation(libs.room.runtime)
-    implementation(libs.room.ktx)
-    implementation(libs.room.paging)
-    implementation(libs.hilt.android)
-    implementation(libs.work.runtime.ktx)
-    implementation(libs.hilt.work)
-    implementation(libs.coroutines.core)
-    implementation(libs.coroutines.android)
-    implementation(libs.datastore.preferences)
-    implementation(libs.splashscreen)
     implementation(libs.constraintlayout)
     implementation(libs.recyclerview)
     implementation(libs.cardview)
-    implementation(libs.viewpager2)
-    implementation(libs.mysql.connector)
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.activity.ktx)
+    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.android)
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    implementation(libs.hilt.android)
 
     kapt(libs.room.compiler)
     kapt(libs.hilt.compiler)
-    kapt(libs.hilt.compiler.androidx)
-    kapt(libs.javapoet)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
