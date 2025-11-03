@@ -20,6 +20,16 @@
         <item name="android:lineHeight">40sp</item>
     </style>
 
+    <style name="AppText.TitleLarge" parent="AppText">
+        <item name="android:textSize">28sp</item>
+        <item name="android:lineHeight">34sp</item>
+    </style>
+
+    <style name="AppText.TitleMedium" parent="AppText">
+        <item name="android:textSize">22sp</item>
+        <item name="android:lineHeight">28sp</item>
+    </style>
+
     <style name="AppText.BodyLarge" parent="AppText">
         <item name="android:textColor">@color/text_secondary</item>
         <item name="android:textSize">20sp</item>
@@ -30,6 +40,18 @@
         <item name="android:textColor">@color/text_secondary</item>
         <item name="android:textSize">18sp</item>
         <item name="android:lineHeight">24sp</item>
+    </style>
+
+    <style name="AppText.BodyMedium" parent="AppText">
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:lineHeight">24sp</item>
+    </style>
+
+    <style name="AppText.BodySmall" parent="AppText">
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineHeight">22sp</item>
     </style>
 
     <style name="AppText.Caption" parent="AppText">
@@ -74,5 +96,10 @@
         <item name="android:paddingEnd">24dp</item>
         <item name="android:paddingTop">16dp</item>
         <item name="android:paddingBottom">16dp</item>
+    </style>
+
+    <style name="AppText.ToolbarTitle" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:fontFamily">@font/figma_hand</item>
+        <item name="android:textColor">@color/text_primary</item>
     </style>
 </resources>
