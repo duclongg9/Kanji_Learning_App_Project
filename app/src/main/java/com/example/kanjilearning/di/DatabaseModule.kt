@@ -5,11 +5,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.kanjilearning.data.KanjiDatabase
-import com.example.kanjilearning.data.dao.CourseDao
 import com.example.kanjilearning.data.dao.KanjiDao
-import com.example.kanjilearning.data.dao.LessonDao
-import com.example.kanjilearning.data.dao.QuizDao
-import com.example.kanjilearning.di.SeedUtil
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,8 +14,8 @@ import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 /**
- * VI: Module Hilt cung cấp Room Database, DAO và seed dữ liệu từ schema.sql.
- * EN: Hilt module wiring the Room database + DAO singletons seeded via schema.sql.
+ * VI: Module Hilt cung cấp Room Database, DAO và seed dữ liệu mẫu.
+ * EN: Hilt module that exposes the Room database and seeds demo rows.
  */
 @Module
 @InstallIn(SingletonComponent::class)
@@ -28,25 +24,19 @@ object DatabaseModule {
     @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): KanjiDatabase =
-        Room.databaseBuilder(context, KanjiDatabase::class.java, "kanji_learning.db")
+        Room.databaseBuilder(context, KanjiDatabase::class.java, "kanji.db")
             .fallbackToDestructiveMigration()
             .addCallback(object : RoomDatabase.Callback() {
                 override fun onCreate(db: SupportSQLiteDatabase) {
                     super.onCreate(db)
-                    SeedUtil.seedFromAsset(context, db, "schema.sql")
+                    // VI/EN: Seed a few Kanji so the RecyclerView is not empty on first launch.
+                    db.execSQL("INSERT INTO kanjis(word, meaning) VALUES('日', 'Mặt trời / Sun')")
+                    db.execSQL("INSERT INTO kanjis(word, meaning) VALUES('学', 'Học / Study')")
+                    db.execSQL("INSERT INTO kanjis(word, meaning) VALUES('心', 'Trái tim / Heart')")
                 }
             })
             .build()
 
     @Provides
     fun provideKanjiDao(database: KanjiDatabase): KanjiDao = database.kanjiDao()
-
-    @Provides
-    fun provideCourseDao(database: KanjiDatabase): CourseDao = database.courseDao()
-
-    @Provides
-    fun provideLessonDao(database: KanjiDatabase): LessonDao = database.lessonDao()
-
-    @Provides
-    fun provideQuizDao(database: KanjiDatabase): QuizDao = database.quizDao()
 }

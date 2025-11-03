@@ -3,44 +3,39 @@ package com.example.kanjilearning.presentation.view
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupWithNavController
-import com.example.kanjilearning.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kanjilearning.databinding.ActivityMainBinding
-import com.example.kanjilearning.presentation.viewmodel.MainToolbarViewModel
+import com.example.kanjilearning.presentation.viewmodel.KanjiViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
- * VI: Activity gốc chứa NavHost và đồng bộ tiêu đề với các destination.
- * EN: Host activity owning the navigation graph and top app bar.
+ * VI: View (Activity) chỉ lo hiển thị và quan sát LiveData từ ViewModel.
+ * EN: The Activity wires the RecyclerView and observes the ViewModel.
  */
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var navController: NavController
-    private val toolbarViewModel: MainToolbarViewModel by viewModels()
+    private val viewModel: KanjiViewModel by viewModels()
+    private val adapter = KanjiListAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setupNavigation()
-        observeToolbarTitle()
+
+        setupRecyclerView()
+        observeKanjis()
     }
 
-    private fun setupNavigation() {
-        val navHost = supportFragmentManager.findFragmentById(R.id.navHostContainer) as NavHostFragment
-        navController = navHost.navController
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.welcomeFragment, R.id.courseListFragment))
-        binding.topAppBar.setupWithNavController(navController, appBarConfiguration)
+    private fun setupRecyclerView() {
+        binding.kanjiRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.kanjiRecyclerView.adapter = adapter
     }
 
-    private fun observeToolbarTitle() {
-        toolbarViewModel.title.observe(this) { title ->
-            binding.topAppBar.title = title
+    private fun observeKanjis() {
+        viewModel.allKanjis.observe(this) { kanjis ->
+            adapter.submitList(kanjis)
         }
     }
 }

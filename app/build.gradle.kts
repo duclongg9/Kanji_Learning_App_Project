@@ -76,8 +76,6 @@ dependencies {
     implementation(libs.activity.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.lifecycle.viewmodel.ktx)
-    implementation(libs.navigation.fragment.ktx)
-    implementation(libs.navigation.ui.ktx)
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
     implementation(libs.room.runtime)

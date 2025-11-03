@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_base">
@@ -14,8 +15,10 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="48dp"
         app:cardBackgroundColor="@color/personal_card_background"
-        app:cardCornerRadius="40dp"
+        app:cardCornerRadius="50dp"
         app:cardElevation="0dp"
+        app:strokeColor="@android:color/transparent"
+        app:strokeWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,54 +27,47 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingHorizontal="32dp"
-            android:paddingVertical="40dp">
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="48dp">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.21" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textTitle"
                 style="@style/AppText.Hero"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="280dp"
+                android:layout_height="314dp"
                 android:gravity="center"
                 android:text="@string/welcome_title"
                 android:textAlignment="center"
+                android:textSize="70sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/guidelineTitle" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textMessage"
                 style="@style/AppText.BodyLarge"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
                 android:text="@string/welcome_message"
                 android:textAlignment="center"
                 android:textColor="@color/text_primary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textTitle" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonStart"
-                style="@style/Widget.MaterialComponents.Button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="8dp"
-                android:backgroundTint="@color/primary_vivid"
-                android:text="@string/welcome_start_cta"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                app:cornerRadius="28dp"
-                app:icon="@drawable/ic_menu"
-                app:iconGravity="textStart"
-                app:iconPadding="16dp"
+                android:textSize="28sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textMessage" />
+                app:layout_constraintTop_toBottomOf="@id/textTitle"
+                app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
