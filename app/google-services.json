@@ -1,1 +1,39 @@
-{"installed":{"client_id":"748643708301-90fr170bgq8s0ienon6hg4cg9dnnui2b.apps.googleusercontent.com","project_id":"certain-gearbox-476003-c7","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs"}}
+{
+  "project_info": {
+    "project_number": "1234567890",
+    "project_id": "kanji-learning-app-demo",
+    "storage_bucket": "kanji-learning-app-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1234567890:android:placeholder",
+        "android_client_info": {
+          "package_name": "com.example.kanjilearning"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "748643708301-90fr170bgq8s0ienon6hg4cg9dnnui2b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHTvGR8yPr7KRVUhkW4jtWpJeGNDXibTU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "748643708301-90fr170bgq8s0ienon6hg4cg9dnnui2b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
