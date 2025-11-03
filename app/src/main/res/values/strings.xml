@@ -3,81 +3,62 @@
     <string name="app_name">Hanabi Kanji</string>
 
     <!-- Welcome -->
-    <string name="welcome_badge">hanabi studio</string>
-    <string name="welcome_title">HANABI
-KANJI APP</string>
-    <string name="welcome_message">chào cậu, chúc cậu học Kanji thật vui cùng Hoa nha</string>
-    <string name="welcome_cta">vào nhà của Hoa</string>
+    <string name="welcome_title">hanabi kanji</string>
+    <string name="welcome_message">Hành trình luyện chữ đẹp như pháo hoa: học Kanji bằng câu chuyện, luyện quiz nhanh như Quizlet.</string>
+    <string name="welcome_start_cta">Bắt đầu khám phá</string>
 
-    <!-- Login -->
-    <string name="login_badge">đăng nhập</string>
-    <string name="login_title">Cậu đăng nhập nhaaa!</string>
-    <string name="login_subtitle">học chung mới vui nè, bấm google nha cậu</string>
-    <string name="action_login_google">Login with Google</string>
-    <string name="login_error_cancelled">Cậu đã huỷ đăng nhập Google.</string>
-    <string name="login_error_missing_id">Không thể xác định tài khoản Google, thử lại nhé!</string>
-    <string name="login_error_sign_in_failed">Đăng nhập Google bị lỗi, cậu thử lại sau nha.</string>
-    <string name="login_error_sign_in_developer_error">Đăng nhập Google bị lỗi vì cấu hình OAuth chưa chính xác (DEVELOPER_ERROR - 10).&#10;• Package name: %1$s&#10;• OAuth client ID đang dùng: %2$s&#10;Hãy thêm SHA-1 của bản build (debug/release) vào Google Cloud Console và tải lại file google-services.json mới nhất.</string>
-    <string name="login_error_sign_in_developer_error_unknown_id">không xác định</string>
-    <string name="login_error_save_failed">Lưu thông tin đăng nhập không thành công, thử lại lần nữa nhé.</string>
+    <!-- Courses -->
+    <string name="courses_screen_title">Lộ trình Kanji</string>
+    <string name="courses_overview_title">Học từng bước</string>
+    <string name="courses_overview_subtitle">Chọn khoá học phù hợp, Hoa sẽ đồng hành cùng cậu.</string>
+    <string name="courses_overview_subtitle_dynamic">Cậu đang có %1$d khoá học đang chờ được chinh phục.</string>
+    <string name="courses_overview_progress">Hoàn thành 0/0 bài học</string>
+    <string name="courses_overview_progress_dynamic">Hoàn thành %1$d/%2$d bài học · %3$d%%</string>
+    <string name="courses_section_label">Khoá học nổi bật</string>
+    <string name="courses_empty">Danh sách khoá học đang được chuẩn bị.</string>
+    <string name="courses_lesson_count">%1$d bài học</string>
+    <string name="courses_progress_percent">Đã hoàn thành %1$d%%</string>
+    <string name="courses_price_format">%1$,dđ</string>
+    <string name="courses_unlock_cta">Mở khóa MoMo</string>
+    <string name="courses_open_cta">Xem bài học</string>
+    <string name="courses_premium_label">Đã mở khóa</string>
 
-    <!-- Mode selection -->
-    <string name="mode_title">Hôm nay cậu muốn học gì?</string>
-    <string name="mode_instruction_top">nếu cậu học thì chọn cái trên</string>
-    <string name="mode_instruction_bottom">nếu cậu luyện tập chọn cái nè</string>
-    <string name="mode_option_study_label">học chữ</string>
-    <string name="mode_option_practice_label">luyện tập</string>
-    <string name="mode_option_study">漢字</string>
-    <string name="mode_option_practice">練習</string>
+    <!-- Course detail -->
+    <string name="course_detail_meta">%1$d bài học · %2$d phút</string>
+    <string name="course_detail_progress">Hoàn thành %1$d/%2$d bài · %3$d%%</string>
+    <string name="course_detail_unlock_cta">Mở khóa qua MoMo</string>
+    <string name="course_detail_start_cta">Học ngay</string>
+    <string name="course_detail_unlocking">Đang xử lý MoMo…</string>
+    <string name="course_detail_unlock_success_title">Đã mở khóa!</string>
+    <string name="course_detail_unlock_success_body">Thanh toán thành công. Mã giao dịch: %1$s</string>
+    <string name="course_detail_momo_title">Thanh toán MoMo</string>
+    <string name="course_detail_momo_message">Nhập số điện thoại MoMo để Hoa gửi yêu cầu thanh toán mô phỏng nhé.</string>
+    <string name="course_detail_momo_invalid">Cậu nhập số điện thoại chưa đúng.</string>
+    <string name="course_detail_no_lessons">Khoá học chưa có bài học nào.</string>
 
-    <!-- Profile / personal -->
-    <string name="profile_menu_content_description">Mở bảng thông tin cá nhân</string>
-    <string name="profile_name">Phạm Đức Long</string>
-    <string name="profile_address">Địa chỉ: Đại học FPT HN</string>
-    <string name="profile_phone">Số điện thoại: 0385189399</string>
-    <string name="profile_level">Trình độ JLPT N1</string>
-    <string name="profile_upgrade">Nâng cấp VIP</string>
-    <string name="profile_version">Phiên bản số 1.0.1</string>
-    <string name="profile_credit">Design by Hoa Na</string>
-    <string name="profile_continue">Đi tới Kanji</string>
-    <string name="profile_menu_title">thông tin bên lề</string>
-    <string name="profile_menu_hint">cậu nâng cấp tài khoản để mở khóa kanji vip nha</string>
-    <string name="profile_role_free">Tài khoản miễn phí</string>
-    <string name="profile_role_vip">Tài khoản VIP</string>
-    <string name="profile_role_admin">Quản trị viên</string>
-    <string name="profile_email_placeholder">Email: cập nhật sau</string>
-    <string name="profile_sync_placeholder">Đồng bộ lần cuối: --</string>
-    <string name="profile_email_format">Email: %1$s</string>
-    <string name="profile_last_sync_format">Đồng bộ lần cuối: %1$s</string>
-    <string name="profile_sync_never">Đồng bộ lần cuối: chưa có</string>
+    <!-- Lesson detail -->
+    <string name="lesson_order_label">#%1$d</string>
+    <string name="lesson_meta">%1$d câu hỏi · %2$d phút</string>
+    <string name="lesson_progress_label">Điểm cao nhất: %1$d/%2$d</string>
+    <string name="lesson_status_completed">Đã hoàn thành</string>
+    <string name="lesson_status_pending">Chưa hoàn thành</string>
 
-    <!-- Kanji screen -->
-    <string name="kanji_title">Hoa đã gom Kanji nè</string>
-    <string name="kanji_subtitle">chọn cấp độ phù hợp rồi mở ra xem nha cậu</string>
-    <string name="kanji_section_n5">Kanji cấp độ N5</string>
-    <string name="kanji_section_n4">Kanji cấp độ N4</string>
-    <string name="kanji_section_n3">Kanji cấp độ N3</string>
-    <string name="kanji_section_n2">Kanji cấp độ N2</string>
-    <string name="kanji_section_n1">Kanji cấp độ N1</string>
-    <string name="kanji_option_basic">Cơ bản</string>
-    <string name="kanji_option_intermediate">Trung cấp</string>
-    <string name="kanji_option_advanced">Cao cấp</string>
-    <string name="kanji_option_vip">VIP</string>
-    <string name="kanji_section_level_format">Kanji cấp độ %1$s</string>
-    <string name="kanji_section_empty">Chưa có Kanji miễn phí ở cấp độ này.</string>
-    <string name="kanji_entry_pronunciation_format">On: %1$s • Kun: %2$s</string>
-    <string name="kanji_entry_difficulty_format">Độ khó: %1$d/10</string>
-    <string name="kanji_entry_tier_format">Quyền truy cập: %1$s</string>
-    <string name="kanji_tier_free">Miễn phí</string>
-    <string name="kanji_tier_vip">VIP lung linh</string>
-    <string name="kanji_action_add">thêm Kanji mới</string>
-    <string name="kanji_action_edit">sửa Kanji này</string>
-    <string name="kanji_action_delete">xoá Kanji này</string>
-    <string name="kanji_action_update">lưu thay đổi</string>
-    <string name="kanji_message_created">Đã thêm Kanji mới thật xinh xắn!</string>
-    <string name="kanji_message_updated">Đã cập nhật Kanji, nhìn cưng hơn rồi!</string>
-    <string name="kanji_message_deleted">Kanji đã được tạm biệt nhẹ nhàng.</string>
-    <string name="kanji_error_character_required">Cậu điền ký tự Kanji giúp Hoa nha.</string>
-    <string name="kanji_error_meaning_required">Hoa cần ý nghĩa để ghi chú lại nè.</string>
-    <string name="kanji_delete_confirm">Cậu chắc chắn muốn tạm biệt chữ %1$s không?</string>
+    <string name="course_detail_title">Chi tiết khoá học</string>
+    <string name="lesson_detail_title">Bài học Kanji</string>
+
+    <!-- Kanji detail -->
+    <string name="kanji_meaning_format">%1$s · %2$s</string>
+    <string name="kanji_reading_format">On: %1$s · Kun: %2$s</string>
+    <string name="kanji_example_format">%1$s · %2$s</string>
+
+    <!-- Quiz -->
+    <string name="quiz_title">Luyện trắc nghiệm</string>
+    <string name="quiz_progress_label">Câu %1$d/%2$d</string>
+    <string name="quiz_explanation_format">Giải thích: %1$s</string>
+    <string name="quiz_check_cta">Kiểm tra</string>
+    <string name="quiz_next_cta">Câu tiếp theo</string>
+    <string name="quiz_finish_cta">Hoàn tất</string>
+    <string name="quiz_result_great">Tuyệt vời!</string>
+    <string name="quiz_result_keep_trying">Cùng luyện thêm nhé!</string>
+    <string name="quiz_result_summary">Cậu trả lời đúng %1$d/%2$d câu.</string>
 </resources>
