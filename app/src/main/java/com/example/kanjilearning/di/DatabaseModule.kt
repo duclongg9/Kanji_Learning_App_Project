@@ -8,6 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+
 /**
  * VI: Cung cấp cấu hình MySQL dùng cho datasource.
  * EN: Provides the MySQL configuration consumed by the data source layer.
@@ -26,7 +27,7 @@ object DatabaseModule {
         host = BuildConfig.MYSQL_HOST,
         port = BuildConfig.MYSQL_PORT,
         database = BuildConfig.MYSQL_DB_NAME,
-        username = BuildConfig.MYSQL_USER,
+        username = BuildConfig.MYSQL_USERNAME,
         password = BuildConfig.MYSQL_PASSWORD
     )
 }

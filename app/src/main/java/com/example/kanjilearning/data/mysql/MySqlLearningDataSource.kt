@@ -346,7 +346,7 @@ class MySqlLearningDataSource @Inject constructor(
      * EN: Maps the current row to a KanjiModel.
      */
     private fun ResultSet.toKanjiModel(): KanjiModel = KanjiModel(
-        character = getString("character"),
+        characters = getString("characters"),
         meaningVi = getString("meaning_vi"),
         meaningEn = getString("meaning_en"),
         onyomi = getString("onyomi"),

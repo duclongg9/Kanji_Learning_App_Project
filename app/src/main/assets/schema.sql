@@ -1,4 +1,14 @@
 -- Reset schema for MySQL deployment
+DROP DATABASE IF EXISTS `kanji_test`;
+CREATE DATABASE `kanji_test`
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_0900_ai_ci;
+USE `kanji_test`;
+
+-- Optional safety (keeps consistent behavior)
+SET NAMES utf8mb4;
+SET SQL_MODE = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
 SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS payment_transactions;
 DROP TABLE IF EXISTS lesson_progress;
@@ -14,7 +24,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 -- Core tables
 CREATE TABLE IF NOT EXISTS kanjis (
     kanji_id BIGINT PRIMARY KEY,
-    character VARCHAR(16) NOT NULL,
+    characters VARCHAR(16) NOT NULL,
     meaning_vi VARCHAR(255) NOT NULL,
     meaning_en VARCHAR(255) NOT NULL,
     onyomi VARCHAR(128) NOT NULL,
@@ -106,7 +116,7 @@ CREATE TABLE IF NOT EXISTS payment_transactions (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Seed Kanji data
-INSERT INTO kanjis(kanji_id, character, meaning_vi, meaning_en, onyomi, kunyomi, stroke_count, jlpt_level, example, example_translation) VALUES
+INSERT INTO kanjis(kanji_id, characters, meaning_vi, meaning_en, onyomi, kunyomi, stroke_count, jlpt_level, example, example_translation) VALUES
 (101, '日', 'ngày; mặt trời', 'sun; day', 'ニチ, ジツ', 'ひ, -び, -か', 4, 'N5', '休日', 'ngày nghỉ / day off'),
 (102, '月', 'trăng; tháng', 'moon; month', 'ゲツ, ガツ', 'つき', 4, 'N5', '月曜日', 'thứ hai / Monday'),
 (103, '火', 'lửa', 'fire', 'カ', 'ひ, -び', 4, 'N5', '火山', 'núi lửa / volcano'),

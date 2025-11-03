@@ -19,6 +19,7 @@
     <color name="quiz_option_selected">#FFFFE1D9</color>
     <color name="quiz_option_correct">#FF52C29A</color>
     <color name="quiz_option_wrong">#FFE57373</color>
+    <color name="pill_chip">#FFF7D7D0</color>
     <color name="pill_chip_disabled">#FFEBD4D4</color>
     <color name="pill_vip">#FFFFF0E8</color>
     <color name="bg_vip_badge">#FFFFF0E8</color>

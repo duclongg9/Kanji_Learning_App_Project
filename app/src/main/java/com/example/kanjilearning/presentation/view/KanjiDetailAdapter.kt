@@ -16,7 +16,7 @@ class KanjiDetailAdapter : ListAdapter<KanjiModel, KanjiDetailAdapter.KanjiViewH
 
     object DiffCallback : DiffUtil.ItemCallback<KanjiModel>() {
         override fun areItemsTheSame(oldItem: KanjiModel, newItem: KanjiModel): Boolean =
-            oldItem.character == newItem.character
+            oldItem.characters == newItem.characters
 
         override fun areContentsTheSame(oldItem: KanjiModel, newItem: KanjiModel): Boolean =
             oldItem == newItem
@@ -26,7 +26,7 @@ class KanjiDetailAdapter : ListAdapter<KanjiModel, KanjiDetailAdapter.KanjiViewH
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: KanjiModel) {
-            binding.textCharacter.text = item.character
+            binding.textCharacter.text = item.characters
             binding.textMeaning.text = binding.root.context.getString(
                 com.example.kanjilearning.R.string.kanji_meaning_format,
                 item.meaningVi,

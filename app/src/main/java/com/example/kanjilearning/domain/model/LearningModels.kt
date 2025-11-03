@@ -46,7 +46,7 @@ data class LessonDetailModel(
 )
 
 data class KanjiModel(
-    val character: String,
+    val characters: String,
     val meaningVi: String,
     val meaningEn: String,
     val onyomi: String,

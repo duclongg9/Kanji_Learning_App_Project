@@ -46,10 +46,43 @@
     <string name="course_detail_title">Chi tiết khoá học</string>
     <string name="lesson_detail_title">Bài học Kanji</string>
 
+    <!-- Kanji -->
+    <string name="kanji_title">Tủ Kanji của cậu</string>
+    <string name="kanji_subtitle">Lưu lại những chữ Kanji yêu thích để học mỗi ngày.</string>
+    <string name="kanji_section_empty">Chưa có Kanji nào được thêm. Hãy bắt đầu sưu tầm nhé!</string>
+    <string name="kanji_action_add">Thêm Kanji</string>
+    <string name="kanji_action_edit">Chỉnh sửa</string>
+    <string name="kanji_action_delete">Xoá Kanji</string>
+
     <!-- Kanji detail -->
     <string name="kanji_meaning_format">%1$s · %2$s</string>
     <string name="kanji_reading_format">On: %1$s · Kun: %2$s</string>
     <string name="kanji_example_format">%1$s · %2$s</string>
+
+    <!-- Login -->
+    <string name="login_title">Đăng nhập Hanabi</string>
+    <string name="login_subtitle">Kết nối tài khoản để đồng bộ hành trình học của cậu.</string>
+    <string name="action_login_google">Đăng nhập với Google</string>
+
+    <!-- Mode selection -->
+    <string name="mode_instruction_top">Chọn cách cậu muốn học Kanji hôm nay.</string>
+    <string name="mode_option_study">Học Kanji</string>
+    <string name="mode_option_practice">Luyện tập nhanh</string>
+    <string name="mode_instruction_bottom">Cậu có thể đổi chế độ bất kỳ lúc nào.</string>
+
+    <!-- Profile -->
+    <string name="profile_menu_content_description">Mở menu tài khoản</string>
+    <string name="profile_name">Hoa Hanabi</string>
+    <string name="profile_level">Cấp độ: Tân binh chăm chỉ</string>
+    <string name="profile_email_placeholder">Email: hoa.hanabi@example.com</string>
+    <string name="profile_sync_placeholder">Đồng bộ lần cuối: Chưa có</string>
+    <string name="profile_version">Phiên bản 1.0.0</string>
+    <string name="profile_credit">Thiết kế và phát triển bởi đội ngũ Hanabi.</string>
+    <string name="profile_continue">Tiếp tục học</string>
+    <string name="profile_menu_title">Tài khoản của cậu</string>
+    <string name="profile_menu_hint">Khám phá thêm ưu đãi và tính năng mới nhé!</string>
+    <string name="profile_upgrade">Nâng cấp VIP</string>
+
 
     <!-- Quiz -->
     <string name="quiz_title">Luyện trắc nghiệm</string>
