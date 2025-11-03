@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.kanjilearning.presentation.view.WelcomeFragment"
+        android:label="@string/welcome_title">
+        <action
+            android:id="@+id/action_welcomeFragment_to_courseListFragment"
+            app:destination="@id/courseListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/courseListFragment"
+        android:name="com.example.kanjilearning.presentation.view.CourseListFragment"
+        android:label="@string/courses_screen_title">
+        <action
+            android:id="@+id/action_courseListFragment_to_courseDetailFragment"
+            app:destination="@id/courseDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/courseDetailFragment"
+        android:name="com.example.kanjilearning.presentation.view.CourseDetailFragment"
+        android:label="@string/course_detail_title"
+        app:defaultNavHost="false">
+        <argument
+            android:name="courseId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_courseDetailFragment_to_lessonDetailFragment"
+            app:destination="@id/lessonDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/lessonDetailFragment"
+        android:name="com.example.kanjilearning.presentation.view.LessonDetailFragment"
+        android:label="@string/lesson_detail_title">
+        <argument
+            android:name="lessonId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_lessonDetailFragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/quizFragment"
+        android:name="com.example.kanjilearning.presentation.view.QuizFragment"
+        android:label="@string/quiz_title">
+        <argument
+            android:name="lessonId"
+            app:argType="long" />
+    </fragment>
+</navigation>
