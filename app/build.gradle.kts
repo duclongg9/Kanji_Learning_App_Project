@@ -28,6 +28,12 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "MYSQL_HOST", "\"10.0.2.2\"")
+        buildConfigField("int", "MYSQL_PORT", "3306")
+        buildConfigField("String", "MYSQL_DB_NAME", "\"kanji_learning\"")
+        buildConfigField("String", "MYSQL_USERNAME", "\"kanji_user\"")
+        buildConfigField("String", "MYSQL_PASSWORD", "\"kanji_pass\"")
     }
 
     buildTypes {
@@ -42,6 +48,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 
     compileOptions {
@@ -76,13 +83,13 @@ dependencies {
     implementation(libs.activity.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
-    implementation(libs.room.runtime)
-    implementation(libs.room.ktx)
     implementation(libs.hilt.android)
+    implementation(libs.mysql.connector)
 
-    kapt(libs.room.compiler)
     kapt(libs.hilt.compiler)
 
     testImplementation(libs.junit)
