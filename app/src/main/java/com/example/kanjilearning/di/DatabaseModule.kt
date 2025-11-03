@@ -26,7 +26,7 @@ object DatabaseModule {
         host = BuildConfig.MYSQL_HOST,
         port = BuildConfig.MYSQL_PORT,
         database = BuildConfig.MYSQL_DB_NAME,
-        username = BuildConfig.MYSQL_USERNAME,
+        username = BuildConfig.MYSQL_USER,
         password = BuildConfig.MYSQL_PASSWORD
     )
 }
