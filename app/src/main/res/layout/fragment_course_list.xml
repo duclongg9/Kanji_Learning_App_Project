@@ -3,17 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_base">
+    android:background="@android:color/transparent">
+
+    <ImageView
+        android:id="@+id/courseOrb"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_marginStart="-60dp"
+        android:alpha="0.7"
+        android:src="@drawable/bg_blur_orb_cyan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/overviewCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
-        android:padding="24dp"
-        app:cardBackgroundColor="@color/personal_card_background"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -21,54 +32,57 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:background="@drawable/bg_course_header"
+            android:orientation="vertical"
+            android:padding="24dp">
 
-            <com.google.android.material.textview.MaterialTextView
+            <TextView
                 android:id="@+id/textWelcome"
-                style="@style/AppText.TitleLarge"
+                style="@style/TextAppearance.Material3.TitleLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/courses_overview_title"
-                android:textColor="@color/text_primary" />
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
 
-            <com.google.android.material.textview.MaterialTextView
+            <TextView
                 android:id="@+id/textOverview"
-                style="@style/AppText.BodyMedium"
+                style="@style/TextAppearance.Material3.BodyMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/text_secondary"
-                android:text="@string/courses_overview_subtitle" />
+                android:layout_marginTop="6dp"
+                android:text="@string/courses_overview_subtitle"
+                android:textColor="@color/glass_highlight" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/progressOverview"
-                style="@style/Widget.MaterialComponents.LinearProgressIndicator"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:progress="0"
-                app:trackColor="@color/progress_track"
-                app:indicatorColor="@color/primary_vivid" />
+                android:indeterminate="false"
+                app:indicatorColor="@color/holo_magenta"
+                app:trackColor="@color/glass_highlight" />
 
-            <com.google.android.material.textview.MaterialTextView
+            <TextView
                 android:id="@+id/textProgress"
-                style="@style/AppText.BodySmall"
+                style="@style/TextAppearance.Material3.BodySmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="@string/courses_overview_progress"
-                android:textColor="@color/text_secondary" />
+                android:textColor="@color/glass_highlight" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.textview.MaterialTextView
+    <TextView
         android:id="@+id/textCoursesLabel"
-        style="@style/AppText.TitleMedium"
+        style="@style/TextAppearance.Material3.TitleMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
         android:text="@string/courses_section_label"
-        android:textColor="@color/text_primary"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/overviewCard" />
 
@@ -76,10 +90,10 @@
         android:id="@+id/recyclerCourses"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,19 +104,20 @@
         android:id="@+id/loadingIndicator"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:indeterminate="true"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <TextView
         android:id="@+id/textEmpty"
-        style="@style/AppText.BodyMedium"
+        style="@style/TextAppearance.Material3.BodyMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/courses_empty"
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/glass_highlight"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

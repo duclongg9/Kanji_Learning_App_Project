@@ -450,7 +450,7 @@ class MySqlLearningDataSource @Inject constructor(
 
         private const val KANJI_BY_LESSON_SQL =
             """
-            SELECT k.character, k.meaning_vi, k.meaning_en, k.onyomi, k.kunyomi, k.stroke_count,
+            SELECT k.characters, k.meaning_vi, k.meaning_en, k.onyomi, k.kunyomi, k.stroke_count,
                    k.jlpt_level, k.example, k.example_translation
             FROM lesson_kanji_cross_ref lk
             INNER JOIN kanjis k ON k.kanji_id = lk.kanji_id

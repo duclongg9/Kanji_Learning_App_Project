@@ -46,6 +46,13 @@ class CourseAdapter(
             val isUnlocked = item.isUnlocked
             binding.textPrice.visibility = if (!isUnlocked && item.isPremium) View.VISIBLE else View.GONE
             binding.chipLocked.visibility = if (!isUnlocked && item.isPremium) View.VISIBLE else View.GONE
+            binding.accentBar.setBackgroundResource(
+                if (isUnlocked || !item.isPremium) {
+                    com.example.kanjilearning.R.drawable.bg_neon_pill
+                } else {
+                    com.example.kanjilearning.R.drawable.bg_neon_outline
+                }
+            )
             if (!isUnlocked && item.isPremium) {
                 binding.textPrice.text = binding.root.context.getString(
                     com.example.kanjilearning.R.string.courses_price_format,
@@ -54,13 +61,13 @@ class CourseAdapter(
                 binding.buttonPrimary.text = binding.root.context.getString(
                     com.example.kanjilearning.R.string.courses_unlock_cta
                 )
-                binding.chipLocked.setChipBackgroundColorResource(com.example.kanjilearning.R.color.bg_vip_badge)
+                binding.chipLocked.setChipBackgroundColorResource(com.example.kanjilearning.R.color.glass_surface)
             } else {
                 binding.textPrice.visibility = View.GONE
                 binding.chipLocked.visibility = if (item.isPremium) View.VISIBLE else View.GONE
                 if (item.isPremium) {
                     binding.chipLocked.text = binding.root.context.getString(com.example.kanjilearning.R.string.courses_premium_label)
-                    binding.chipLocked.setChipBackgroundColorResource(com.example.kanjilearning.R.color.bg_vip_badge)
+                    binding.chipLocked.setChipBackgroundColorResource(com.example.kanjilearning.R.color.glass_surface)
                 } else {
                     binding.chipLocked.text = ""
                 }

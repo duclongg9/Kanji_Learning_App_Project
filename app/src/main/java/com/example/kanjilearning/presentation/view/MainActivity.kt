@@ -1,6 +1,7 @@
 package com.example.kanjilearning.presentation.view
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -34,8 +35,15 @@ class MainActivity : AppCompatActivity() {
     private fun setupNavigation() {
         val navHost = supportFragmentManager.findFragmentById(R.id.navHostContainer) as NavHostFragment
         navController = navHost.navController
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.welcomeFragment, R.id.courseListFragment))
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.authLandingFragment, R.id.courseListFragment))
         binding.topAppBar.setupWithNavController(navController, appBarConfiguration)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            val shouldHideToolbar = when (destination.id) {
+                R.id.authLandingFragment, R.id.loginFragment, R.id.registerFragment -> true
+                else -> false
+            }
+            binding.topAppBar.visibility = if (shouldHideToolbar) View.GONE else View.VISIBLE
+        }
     }
 
     private fun observeToolbarTitle() {

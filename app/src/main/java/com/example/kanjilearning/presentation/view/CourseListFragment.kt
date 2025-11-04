@@ -14,6 +14,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.kanjilearning.R
 import com.example.kanjilearning.databinding.FragmentCourseListBinding
+import com.example.kanjilearning.presentation.viewmodel.AuthViewModel
 import com.example.kanjilearning.presentation.viewmodel.CourseListUiState
 import com.example.kanjilearning.presentation.viewmodel.CourseListViewModel
 import com.example.kanjilearning.presentation.viewmodel.MainToolbarViewModel
@@ -31,7 +32,10 @@ class CourseListFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: CourseListViewModel by viewModels()
     private val toolbarViewModel: MainToolbarViewModel by activityViewModels()
+    private val authViewModel: AuthViewModel by activityViewModels()
     private lateinit var adapter: CourseAdapter
+    private var currentRoleName: String? = null
+    private var latestState: CourseListUiState? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,6 +50,7 @@ class CourseListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         collectState()
+        observeAuthState()
     }
 
     override fun onResume() {
@@ -82,6 +87,7 @@ class CourseListFragment : Fragment() {
     }
 
     private fun renderState(state: CourseListUiState) {
+        latestState = state
         binding.loadingIndicator.visibility = if (state.isLoading) View.VISIBLE else View.GONE
         binding.textEmpty.visibility = if (!state.isLoading && state.courses.isEmpty()) View.VISIBLE else View.GONE
         adapter.submitList(state.courses)
@@ -92,10 +98,21 @@ class CourseListFragment : Fragment() {
             state.totalLessons,
             state.overallPercent
         )
-        binding.textOverview.text = if (state.totalLessons == 0) {
+        val overviewBase = if (state.totalLessons == 0) {
             getString(R.string.courses_overview_subtitle)
         } else {
             getString(R.string.courses_overview_subtitle_dynamic, state.courses.size)
+        }
+        val roleSuffix = currentRoleName?.let { getString(R.string.courses_role_context, it) }
+        binding.textOverview.text = listOfNotNull(overviewBase, roleSuffix).joinToString(" · ")
+    }
+
+    private fun observeAuthState() {
+        authViewModel.stateLiveData.observe(viewLifecycleOwner) { state ->
+            val name = state.session?.displayName ?: getString(R.string.courses_overview_title)
+            binding.textWelcome.text = getString(R.string.courses_overview_greeting, name)
+            currentRoleName = state.session?.role?.displayName
+            latestState?.let { renderState(it) }
         }
     }
 
