@@ -31,9 +31,9 @@ android {
 
         buildConfigField("String", "MYSQL_HOST", "\"10.0.2.2\"")
         buildConfigField("int", "MYSQL_PORT", "3306")
-        buildConfigField("String", "MYSQL_DB_NAME", "\"kanji_learning\"")
-        buildConfigField("String", "MYSQL_USERNAME", "\"kanji_user\"")
-        buildConfigField("String", "MYSQL_PASSWORD", "\"kanji_pass\"")
+        buildConfigField("String", "MYSQL_DB_NAME", "\"kanji_test\"")
+        buildConfigField("String", "MYSQL_USERNAME", "\"root\"")
+        buildConfigField("String", "MYSQL_PASSWORD", "\"123456\"")
     }
 
     buildTypes {
