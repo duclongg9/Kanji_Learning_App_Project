@@ -63,6 +63,18 @@
     <string name="login_title">Đăng nhập Hanabi</string>
     <string name="login_subtitle">Kết nối tài khoản để đồng bộ hành trình học của cậu.</string>
     <string name="action_login_google">Đăng nhập với Google</string>
+    <string name="hint_email">Email của cậu</string>
+    <string name="hint_password">Mật khẩu</string>
+    <string name="hint_display_name">Tên hiển thị</string>
+    <string name="action_login">Đăng nhập</string>
+    <string name="action_go_to_register">Tạo tài khoản mới</string>
+    <string name="action_register">Đăng ký</string>
+    <string name="action_back_to_login">Quay lại đăng nhập</string>
+    <string name="register_title">Đăng ký Hanabi</string>
+    <string name="register_subtitle">Chọn phong cách học và nhận lộ trình cá nhân hoá.</string>
+    <string name="register_role_label">Cậu là ai trong hành trình Kanji?</string>
+    <string name="auth_missing_fields">Vui lòng nhập đủ thông tin và chọn vai trò.</string>
+    <string name="auth_welcome_back">Chào mừng %1$s trở lại!</string>
 
     <!-- Mode selection -->
     <string name="mode_instruction_top">Chọn cách cậu muốn học Kanji hôm nay.</string>
@@ -83,6 +95,11 @@
     <string name="profile_menu_hint">Khám phá thêm ưu đãi và tính năng mới nhé!</string>
     <string name="profile_upgrade">Nâng cấp VIP</string>
 
+    <!-- Landing -->
+    <string name="landing_title">Kích hoạt hành trình Kanji</string>
+    <string name="landing_subtitle">Bản đồ học thuật tương tác, thử thách gamified và mentor đồng hành trực tiếp.</string>
+    <string name="landing_highlight">Hệ thống đồng bộ với khoá học thực tế</string>
+    <string name="landing_highlight_detail">Dữ liệu lấy trực tiếp từ MySQL, điểm số và lộ trình cập nhật theo từng phiên luyện tập.</string>
 
     <!-- Quiz -->
     <string name="quiz_title">Luyện trắc nghiệm</string>
@@ -94,4 +111,8 @@
     <string name="quiz_result_great">Tuyệt vời!</string>
     <string name="quiz_result_keep_trying">Cùng luyện thêm nhé!</string>
     <string name="quiz_result_summary">Cậu trả lời đúng %1$d/%2$d câu.</string>
+
+    <!-- Courses enhancements -->
+    <string name="courses_overview_greeting">Xin chào, %1$s!</string>
+    <string name="courses_role_context">Vai trò: %1$s</string>
 </resources>

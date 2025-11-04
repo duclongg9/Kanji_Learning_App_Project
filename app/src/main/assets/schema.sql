@@ -11,6 +11,9 @@ SET SQL_MODE = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTIT
 
 SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS payment_transactions;
+DROP TABLE IF EXISTS user_roles;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS roles;
 DROP TABLE IF EXISTS lesson_progress;
 DROP TABLE IF EXISTS quiz_choices;
 DROP TABLE IF EXISTS quiz_questions;
@@ -115,6 +118,29 @@ CREATE TABLE IF NOT EXISTS payment_transactions (
     CONSTRAINT fk_payment_course FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE IF NOT EXISTS roles (
+    role_id BIGINT PRIMARY KEY,
+    code VARCHAR(32) NOT NULL UNIQUE,
+    display_name VARCHAR(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS users (
+    user_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(128) NOT NULL UNIQUE,
+    password_hash VARCHAR(128) NOT NULL,
+    display_name VARCHAR(128) NOT NULL,
+    avatar_url VARCHAR(255),
+    created_at BIGINT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS user_roles (
+    user_id BIGINT NOT NULL,
+    role_id BIGINT NOT NULL,
+    PRIMARY KEY (user_id, role_id),
+    CONSTRAINT fk_user_roles_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    CONSTRAINT fk_user_roles_role FOREIGN KEY (role_id) REFERENCES roles(role_id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Seed Kanji data
 INSERT INTO kanjis(kanji_id, characters, meaning_vi, meaning_en, onyomi, kunyomi, stroke_count, jlpt_level, example, example_translation) VALUES
 (101, '日', 'ngày; mặt trời', 'sun; day', 'ニチ, ジツ', 'ひ, -び, -か', 4, 'N5', '休日', 'ngày nghỉ / day off'),
@@ -164,6 +190,20 @@ INSERT INTO lessons(lesson_id, course_id, title, summary, order_index, duration_
 -- Default unlock states (course 1 free)
 INSERT INTO course_unlocks(course_id, status, payment_method, transaction_reference, unlocked_at) VALUES
 (1, 'FREE', NULL, NULL, UNIX_TIMESTAMP() * 1000);
+
+-- Seed roles
+INSERT INTO roles(role_id, code, display_name) VALUES
+(1, 'LEARNER', 'Học viên'),
+(2, 'MENTOR', 'Người hướng dẫn');
+
+-- Seed sample users
+INSERT INTO users(user_id, email, password_hash, display_name, avatar_url, created_at) VALUES
+(1, 'learner@kanji.app', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Lan Learner', NULL, UNIX_TIMESTAMP() * 1000),
+(2, 'mentor@kanji.app', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Minh Mentor', NULL, UNIX_TIMESTAMP() * 1000);
+
+INSERT INTO user_roles(user_id, role_id) VALUES
+(1, 1),
+(2, 2);
 
 -- Lesson <> Kanji mapping
 INSERT INTO lesson_kanji_cross_ref(lesson_id, kanji_id, position) VALUES

@@ -29,4 +29,13 @@
     <color name="white">#FFFFFFFF</color>
     <color name="vip_pill">#FFE2BFBF</color>
     <color name="bg_personal">#FFEDDFDF</color>
+
+    <color name="holo_midnight">#FF0F172A</color>
+    <color name="holo_plum">#FF471F4E</color>
+    <color name="holo_azure">#FF1F6EB9</color>
+    <color name="holo_cyan">#FF3FE8C4</color>
+    <color name="holo_magenta">#FFFF4D8C</color>
+    <color name="glass_surface">#33FFFFFF</color>
+    <color name="glass_stroke">#80FFFFFF</color>
+    <color name="glass_highlight">#4DFFFFFF</color>
 </resources>
