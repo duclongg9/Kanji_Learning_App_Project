@@ -17,20 +17,20 @@ data class MySqlConfig(
         "useUnicode" to "true",
         "characterEncoding" to "UTF-8",
         "serverTimezone" to "UTC",
-        "useSSL" to "false"
+        "useSSL" to "false",
+        "allowPublicKeyRetrieval" to "true",
+        "connectTimeout" to "10000",
+        "socketTimeout" to "10000",
+        "tcpKeepAlive" to "true"
     )
 ) {
-
-    /**
-     * VI: Tạo JDBC URL dạng `jdbc:mysql://host:port/db?params`.
-     * EN: Builds the JDBC URL formatted as `jdbc:mysql://host:port/db?params`.
-     */
     val jdbcUrl: String
         get() {
-            val encodedParams = additionalParams.entries.joinToString("&") { (key, value) ->
-                val encodedValue = URLEncoder.encode(value, StandardCharsets.UTF_8)
-                "$key=$encodedValue"
+            val encodedParams = additionalParams.entries.joinToString("&") { (k, v) ->
+                val enc = URLEncoder.encode(v, StandardCharsets.UTF_8)
+                "$k=$enc"
             }
+            // DÙNG CÁC FIELD host/port/database THAY VÌ CHUỖI CỨNG
             return "jdbc:mysql://$host:$port/$database?$encodedParams"
         }
 }
